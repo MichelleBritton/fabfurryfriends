@@ -7,4 +7,4 @@ assignees: MichelleBritton
 
 ---
 
-
+As a **role** I can **capability** so that **received benefit**
