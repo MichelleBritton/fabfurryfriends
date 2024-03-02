@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
+import dj_database_url 
 
 # Import env.py
 if os.path.exists('env.py'):
@@ -48,9 +49,12 @@ JWT_AUTH_SAMESITE = 'None'
 SECRET_KEY = 'django-insecure-*b^k=kn5)sf8dl3=z-2u(ymb&ob(v$ijr+2500&-)o(85x6zjz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['8000-michellebri-fabfurryfri-4xvvkgkg78t.ws-eu108.gitpod.io']
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'localhost',
+]
 
 
 # Application definition
@@ -86,6 +90,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN')
+]
+
 ROOT_URLCONF = 'fabfurryfriends.urls'
 
 TEMPLATES = [
@@ -110,12 +118,17 @@ WSGI_APPLICATION = 'fabfurryfriends.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+if 'DEV' in os.environ:
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+else:
+     DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
 
 
 # Password validation
