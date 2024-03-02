@@ -2,3 +2,8 @@
     background-color: #ffffff;
     border-bottom: 4px solid #5ea5a4;
 }
+
+.Active,
+.Active i {
+    color: #815ea5;
+}

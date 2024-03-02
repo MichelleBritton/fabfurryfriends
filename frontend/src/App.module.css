@@ -3,6 +3,9 @@
     font-family: "Raleway", sans-serif;
     min-height: 100vh;
 }
+.Main {
+    padding-top: 200px;
+}
 
 * {
     box-sizing: border-box;

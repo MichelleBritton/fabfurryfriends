@@ -6,30 +6,50 @@ import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 
+import { NavLink } from "react-router-dom";
+
 const NavBar = () => {
     
     return (
         <Navbar className={styles.NavBar} fixed="top">
             <Container fluid>
-                <Navbar.Brand className="pl-5">
-                    <img src={logo} alt="logo" height="150" />
-                </Navbar.Brand>
-        
+                <NavLink to="/">
+                    <Navbar.Brand className="pl-5">
+                        <img src={logo} alt="logo" height="150" />
+                    </Navbar.Brand>
+                </NavLink>
+                
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="pr-5">
                     <Nav className="ml-auto text-left">
-                        <Nav.Link>
+                        <NavLink 
+                            exact
+                            activeClassName={styles.Active}
+                            to="/"
+                        >
                             <i className="fas fa-home"></i>Home
-                        </Nav.Link>
-                        <Nav.Link>
+                        </NavLink>
+                        <NavLink 
+                            exact
+                            activeClassName={styles.Active}
+                            to="/dogs"
+                        >
                             <i className="fas fa-dog"></i>Our Dogs
-                        </Nav.Link>
-                        <Nav.Link>
+                        </NavLink>
+                        <NavLink 
+                            exact
+                            activeClassName={styles.Active}
+                            to="/signup"
+                        >
                             <i className="fas fa-user-plus"></i>Sign Up
-                        </Nav.Link>
-                        <Nav.Link>
+                        </NavLink>
+                        <NavLink 
+                            exact
+                            activeClassName={styles.Active}
+                            to="/login"
+                        >
                             <i className="fas fa-sign-in-alt"></i>Login
-                        </Nav.Link>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
