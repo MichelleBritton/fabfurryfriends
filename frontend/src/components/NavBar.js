@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.png";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -10,7 +11,7 @@ import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    const {expanded, setExpanded, ref} = useClickOutsideToggle()
+    const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
     const createAdvertIcon = (
         <NavLink 
