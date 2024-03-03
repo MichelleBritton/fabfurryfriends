@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.png";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -9,6 +10,8 @@ import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+    const {expanded, setExpanded, ref} = useClickOutsideToggle()
+
     const createAdvertIcon = (
         <NavLink 
             exact
@@ -33,7 +36,7 @@ const NavBar = () => {
 
             <NavLink                 
                 className="ml-4"
-                onClick={}
+                onClick={() => {}}
             >
                 <i className="fas fa-sign-in-alt"></i>Logout
             </NavLink>
@@ -63,7 +66,7 @@ const NavBar = () => {
 
         
     return (
-        <Navbar className={styles.NavBar} fixed="top">
+        <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
             <Container fluid>
                 <NavLink to="/">
                     <Navbar.Brand className="pl-5">
@@ -71,7 +74,11 @@ const NavBar = () => {
                     </Navbar.Brand>
                 </NavLink>
                 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle 
+                    ref={ref}
+                    onClick={() => setExpanded(!expanded)} 
+                    aria-controls="basic-navbar-nav" 
+                />
                 <Navbar.Collapse id="basic-navbar-nav" className="pr-5">
                     <Nav className="ml-auto text-left">
                         <NavLink 
@@ -83,7 +90,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
-                            className="ml-4"
+                            className="ml-md-4"
                             activeClassName={styles.Active}
                             to="/dogs"
                         >
@@ -93,7 +100,7 @@ const NavBar = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    )
-}
+    );
+};
 
 export default NavBar;
