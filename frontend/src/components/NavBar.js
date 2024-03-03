@@ -18,7 +18,7 @@ const NavBar = () => {
     const createAdvertIcon = (
         <NavLink 
             exact
-            className="ml-4"
+            className="ml-lg-4"
             activeClassName={styles.Active}
             to="/adverts/create"
         >
@@ -30,7 +30,7 @@ const NavBar = () => {
         <>
             <NavLink 
                 exact
-                className="ml-4"
+                className="ml-lg-4"
                 activeClassName={styles.Active}
                 to=""
             >
@@ -38,7 +38,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink                 
-                className="ml-4"
+                className="ml-lg-4"
                 onClick={() => {}}
             >
                 <i className="fas fa-sign-in-alt"></i>Logout
@@ -50,7 +50,7 @@ const NavBar = () => {
         <>
             <NavLink 
                 exact
-                className="ml-4"
+                className="ml-lg-4"
                 activeClassName={styles.Active}
                 to="/signup"
             >
@@ -58,7 +58,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink 
                 exact
-                className="ml-4"
+                className="ml-lg-4"
                 activeClassName={styles.Active}
                 to="/login"
             >
@@ -69,7 +69,7 @@ const NavBar = () => {
 
         
     return (
-        <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
+        <Navbar expanded={expanded} className={styles.NavBar} expand="lg" fixed="top">
             <Container fluid>
                 <NavLink to="/">
                     <Navbar.Brand className="pl-5">
@@ -93,7 +93,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
-                            className="ml-md-4"
+                            className="ml-lg-4"
                             activeClassName={styles.Active}
                             to="/dogs"
                         >
