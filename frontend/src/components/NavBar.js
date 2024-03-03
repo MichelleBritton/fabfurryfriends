@@ -40,6 +40,27 @@ const NavBar = () => {
         </>
     );
 
+    const loggedOutIcons = (
+        <>
+            <NavLink 
+                exact
+                className="ml-4"
+                activeClassName={styles.Active}
+                to="/signup"
+            >
+                <i className="fas fa-user-plus"></i>Sign Up
+            </NavLink>
+            <NavLink 
+                exact
+                className="ml-4"
+                activeClassName={styles.Active}
+                to="/login"
+            >
+                <i className="fas fa-sign-in-alt"></i>Login
+            </NavLink>
+        </>
+    );
+
         
     return (
         <Navbar className={styles.NavBar} fixed="top">
@@ -67,22 +88,6 @@ const NavBar = () => {
                             to="/dogs"
                         >
                             <i className="fas fa-dog"></i>Our Dogs
-                        </NavLink>
-                        <NavLink 
-                            exact
-                            className="ml-4"
-                            activeClassName={styles.Active}
-                            to="/signup"
-                        >
-                            <i className="fas fa-user-plus"></i>Sign Up
-                        </NavLink>
-                        <NavLink 
-                            exact
-                            className="ml-4"
-                            activeClassName={styles.Active}
-                            to="/login"
-                        >
-                            <i className="fas fa-sign-in-alt"></i>Login
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse>
