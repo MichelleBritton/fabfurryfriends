@@ -1,6 +1,4 @@
 import jwtDecode from "jwt-decode";
-import { axiosReq } from "../api/axiosDefaults"
-
 
 // Token refresh fix
 export const setTokenTimestamp = (data) => {
