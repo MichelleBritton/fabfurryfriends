@@ -20,6 +20,26 @@ const NavBar = () => {
         </NavLink>
     );
 
+    const loggedInIcons = (
+        <>
+            <NavLink 
+                exact
+                className="ml-4"
+                activeClassName={styles.Active}
+                to=""
+            >
+                Profile
+            </NavLink>
+
+            <NavLink                 
+                className="ml-4"
+                onClick={}
+            >
+                <i className="fas fa-sign-in-alt"></i>Logout
+            </NavLink>
+        </>
+    );
+
         
     return (
         <Navbar className={styles.NavBar} fixed="top">
