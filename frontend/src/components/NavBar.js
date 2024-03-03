@@ -11,6 +11,8 @@ import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
     const createAdvertIcon = (
@@ -97,6 +99,7 @@ const NavBar = () => {
                         >
                             <i className="fas fa-dog"></i>Our Dogs
                         </NavLink>
+                        {currentUser ? loggedInIcons : loggedOutIcons}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
