@@ -9,7 +9,18 @@ import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    
+    const createAdvertIcon = (
+        <NavLink 
+            exact
+            className="ml-4"
+            activeClassName={styles.Active}
+            to="/adverts/create"
+        >
+            <i className="fas fa-square-plus"></i>Create Advert
+        </NavLink>
+    );
+
+        
     return (
         <Navbar className={styles.NavBar} fixed="top">
             <Container fluid>
