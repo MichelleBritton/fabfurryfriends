@@ -31,6 +31,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
+                            className="ml-4"
                             activeClassName={styles.Active}
                             to="/dogs"
                         >
@@ -38,6 +39,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
+                            className="ml-4"
                             activeClassName={styles.Active}
                             to="/signup"
                         >
@@ -45,6 +47,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
+                            className="ml-4"
                             activeClassName={styles.Active}
                             to="/login"
                         >
