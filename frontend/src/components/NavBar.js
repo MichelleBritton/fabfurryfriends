@@ -3,6 +3,7 @@ import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.png";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
 
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -44,13 +45,13 @@ const NavBar = () => {
                 exact
                 className="ml-lg-4"
                 activeClassName={styles.Active}
-                to="/"
+                to="/profile"
             >
-                Profile
+                <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
             </NavLink>
 
             <NavLink      
-                className={styles.NavLink} 
+                className={`${styles.NavLink} ml-lg-4`} 
                 to="/" 
                 onClick={handleSignOut}
             >
