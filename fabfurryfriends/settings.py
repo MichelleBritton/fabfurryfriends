@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'fabfurryfriends.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEV' in os.environ:
+if 'DEVDB' in os.environ:
      DATABASES = {
          'default': {
              'ENGINE': 'django.db.backends.sqlite3',
