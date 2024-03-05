@@ -9,11 +9,23 @@ import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
+
+    const handleSignOut = async () => {
+        try {
+          await axios.post("dj-rest-auth/logout/");
+          setCurrentUser(null);
+          removeTokenTimestamp();
+        } catch (err) {
+          // console.log(err);
+        }
+      };
 
     const createAdvertIcon = (
         <NavLink 
@@ -37,10 +49,10 @@ const NavBar = () => {
                 Profile
             </NavLink>
 
-            <NavLink                 
-                className="ml-lg-4"
-                onClick={() => {}}
-                to="/"
+            <NavLink      
+                className={styles.NavLink} 
+                to="/" 
+                onClick={handleSignOut}
             >
                 <i className="fas fa-sign-in-alt"></i>Logout
             </NavLink>
@@ -67,7 +79,6 @@ const NavBar = () => {
             </NavLink>
         </>
     );
-
         
     return (
         <Navbar expanded={expanded} className={styles.NavBar} expand="lg" fixed="top">

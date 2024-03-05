@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SignUpForm from "./pages/auth/SignUpForm";
+import LoginForm from "./pages/auth/LoginForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -32,7 +33,7 @@ function App() {
           <Route 
             exact 
             path="/login"
-            render={() => <h1>Login</h1>}
+            render={() => <LoginForm />}
           />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
