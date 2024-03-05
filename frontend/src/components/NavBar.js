@@ -32,7 +32,7 @@ const NavBar = () => {
                 exact
                 className="ml-lg-4"
                 activeClassName={styles.Active}
-                to=""
+                to="/"
             >
                 Profile
             </NavLink>
@@ -40,6 +40,7 @@ const NavBar = () => {
             <NavLink                 
                 className="ml-lg-4"
                 onClick={() => {}}
+                to="/"
             >
                 <i className="fas fa-sign-in-alt"></i>Logout
             </NavLink>
