@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import SignUpForm from "./pages/auth/SignUpForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -26,7 +27,7 @@ function App() {
           <Route 
             exact 
             path="/signup"
-            render={() => <h1>Sign Up</h1>}
+            render={() => <SignUpForm />}
           />
           <Route 
             exact 
