@@ -61,7 +61,7 @@ class Profile(models.Model):
     when = models.TextField(blank=True)
     activities = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_red_nyvnez'
+        upload_to='images/', default='../default_profile_lyldgl'
     )
 
     class Meta:
