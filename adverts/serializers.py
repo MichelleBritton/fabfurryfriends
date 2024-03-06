@@ -20,4 +20,4 @@ class AdvertSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'breed', 'age', 'quick_fact_1', 'quick_fact_2', 'quick_fact_3', 
             'quick_fact_4', 'quick_fact_5', 'content', 'image', 'is_owner', 
-        ][]
+        ]
