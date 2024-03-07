@@ -19,7 +19,6 @@ function AdvertPage() {
                     axiosReq.get(`/adverts/${id}`),
                 ]);
                 setAdvert({results: [advert]});
-                console.log(advert);
             } catch(err) {
                 // console.log(err);
             }
