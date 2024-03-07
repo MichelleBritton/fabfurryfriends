@@ -17,6 +17,7 @@ const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
+    const isAdmin = currentUser && currentUser.is_admin_user;
 
     const handleSignOut = async () => {
         try {
@@ -32,7 +33,7 @@ const NavBar = () => {
         <NavLink 
             exact
             className="ml-lg-4"
-            activeClassName={styles.Active}
+            activeClassName={`${styles.Active} clearfix`}
             to="/adverts/create"
         >
             <i className="fas fa-square-plus"></i>Create Advert
@@ -113,7 +114,8 @@ const NavBar = () => {
                             <i className="fas fa-dog"></i>Our Dogs
                         </NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
-                    </Nav>
+                        {isAdmin ? createAdvertIcon : null}
+                    </Nav>                        
                 </Navbar.Collapse>
             </Container>
         </Navbar>

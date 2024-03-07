@@ -12,8 +12,8 @@ import { Image } from "react-bootstrap";
 function AdvertCreateForm() {
 
     return (
-    
-    );
-}
+        <div>test</div>
+    )
+};
 
 export default AdvertCreateForm;
