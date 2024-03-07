@@ -21,9 +21,10 @@ const QuickFacts = (props) => {
         <Col className="ml-auto" md={3}>
             <Card>
                 <Card.Body>  
-                    {dog_name && <Card.Title>{dog_name}</Card.Title>}                      
-                    {breed && <Card.Title>{breed}</Card.Title>}
-                    {age && <Card.Title>{age}</Card.Title>}
+                    {dog_name && <Card.Title>Name: {dog_name}</Card.Title>}                      
+                    {breed && <Card.Title>Breed: {breed}</Card.Title>}
+                    {age && <Card.Title>Age: {age}</Card.Title>}
+                    <h2>Key points to note:</h2>
                     {quick_fact_1 && <Card.Title>{quick_fact_1}</Card.Title>}
                     {quick_fact_2 && <Card.Title>{quick_fact_2}</Card.Title>}
                     {quick_fact_3 && <Card.Title>{quick_fact_3}</Card.Title>}
