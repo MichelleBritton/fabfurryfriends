@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
+import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -35,6 +36,7 @@ function App() {
             path="/login"
             render={() => <LoginForm />}
           />
+          <Route exact path="/adverts/create" render={() => <AdvertCreateForm />} />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>
