@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
+import Advert from "./Advert";
 
 import { useParams } from "react-router-dom";
-import Advert from "./Advert";
+import { Container } from "react-bootstrap";
 
 function AdvertPage() {
     const { id } = useParams();
@@ -27,7 +29,9 @@ function AdvertPage() {
     }, [id]);
 
     return (
-        <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage />              
+        <Container className={`${appStyles.MainContent}`} fluid>
+            <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
+        </Container>                     
     );
 }
 

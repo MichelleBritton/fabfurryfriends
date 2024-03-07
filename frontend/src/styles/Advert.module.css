@@ -1,0 +1,10 @@
+.Advert {
+    background-color: #ffffff;
+    border: 2px solid #5ea5a4;
+    border-radius: 20px;
+    padding: 30px;
+  }
+
+  .CardBody {
+    padding: 0 !important;
+  }

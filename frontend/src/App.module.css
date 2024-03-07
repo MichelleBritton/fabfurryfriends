@@ -16,6 +16,10 @@
     padding: 40px;
 }
 
+.MainContent {
+    padding: 30px 5%;
+}
+
 .Image {
     max-height: 40vh;
     max-width: 100%;
