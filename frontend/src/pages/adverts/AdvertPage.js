@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import { useParams } from "react-router-dom";
+import Advert from "./Advert";
 
 function AdvertPage() {
     const { id } = useParams();
@@ -26,7 +27,7 @@ function AdvertPage() {
     }, [id]);
 
     return (
-        <p>Post component</p>               
+        <Advert {...advert.results[0]} setAdvert={setAdvert} />              
     );
 }
 
