@@ -109,7 +109,7 @@ const NavBar = () => {
                             exact
                             className="ml-lg-4"
                             activeClassName={styles.Active}
-                            to="/dogs"
+                            to="/adverts"
                         >
                             <i className="fas fa-dog"></i>Our Dogs
                         </NavLink>

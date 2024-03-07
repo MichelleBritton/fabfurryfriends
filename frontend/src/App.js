@@ -23,7 +23,7 @@ function App() {
           />
           <Route 
             exact 
-            path="/dogs"
+            path="/adverts"
             render={() => <h1>Our Dogs</h1>}
           />
           <Route 
