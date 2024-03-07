@@ -25,12 +25,13 @@ const Advert = (props) => {
         quick_fact_4,
         quick_fact_5,
         content,
-        image,      
+        image,        
+        advertPage,
+        setAdvert,
     } = props;
 
     const currentUser = useCurrentUser();
-    //const isAdmin = currentUser?.username === owner && currentUser.is_admin_user;
-    const is_owner = currentUser?.username === owner;
+    const isAdmin = currentUser && currentUser.is_admin_user;
 
     return (
         <Card>
@@ -38,7 +39,13 @@ const Advert = (props) => {
                 <Media className="align-items-center justify-content-between">                    
                     <div className="d-flex align-items-center">
                         <span>{updated_at}</span>
-                       
+                        {isAdmin && advertPage && (
+                            // <MoreDropdown
+                            //     handleEdit={() => {}}
+                            //     handleDelete={() => {}}
+                            // />
+                            <div>Admin edit options</div>
+                        )}
                     </div>
                 </Media>
             </Card.Body>

@@ -27,7 +27,7 @@ function AdvertPage() {
     }, [id]);
 
     return (
-        <Advert {...advert.results[0]} setAdvert={setAdvert} />              
+        <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage />              
     );
 }
 
