@@ -9,7 +9,7 @@ class Advert(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    name = models.CharField(max_length=255, blank=True)
+    dog_name = models.CharField(max_length=255, blank=True)
     breed = models.CharField(max_length=255, blank=True)
     age = models.CharField(max_length=255, blank=True)
     quick_fact_1 = models.CharField(max_length=255, blank=True)
