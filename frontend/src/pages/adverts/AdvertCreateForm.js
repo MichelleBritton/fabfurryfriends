@@ -15,7 +15,6 @@ import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
-import styles from "../../styles/AdvertCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
@@ -227,12 +226,12 @@ function AdvertCreateForm() {
             ))}
     
         <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            className={`${btnStyles.Button} ${btnStyles.Bright}`}
             onClick={() => history.goBack()}
         >
             cancel
         </Button>
-        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+        <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
             create
         </Button>
         </div>
@@ -241,9 +240,9 @@ function AdvertCreateForm() {
     return (
         <Form onSubmit={handleSubmit}>
             <Row>
-                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                <Col className="py-2 mx-auto" md={6} lg={8}>
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                        className={`${appStyles.Content} d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -270,12 +269,12 @@ function AdvertCreateForm() {
                                 </Alert>
                             ))}
                         </Form.Group>
-                        <div className="d-md-none">{textFields}</div>
+                       {textFields}
                     </Container>
                 </Col>
-                <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+                {/* <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
                     <Container className={appStyles.Content}>{textFields}</Container>
-                </Col>
+                </Col> */}
             </Row>
         </Form>
     );
