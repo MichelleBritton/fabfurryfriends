@@ -42,21 +42,27 @@ function AdvertsPage ({ message }) {
                     left
                 </Col>
                 <Col className="ml-auto" md={8}>
-                    {hasLoaded ? (
-                        adverts.results.length ? (
-                            adverts.results.map((advert) => (
-                                <Advert key={advert.id} {...advert} setAdverts={setAdverts} />
-                            ))
-                        ) : (
+                    <div className="d-flex flex-row flex-wrap justify-content-between">
+                        <Row>
+                            {hasLoaded ? (
+                                adverts.results.length ? (
+                                    adverts.results.map((advert) => (  
+                                        <Col className={styles.Card} xs={12} md={6} xl={4}>
+                                            <Advert key={advert.id} {...advert} setAdverts={setAdverts} /> 
+                                        </Col>                       
+                                    ))
+                                ) : (
+                                    <Container className={appStyles.Content}>
+                                        <Asset src={NoResults} message={message} />
+                                    </Container>
+                                )
+                            ) : 
                             <Container className={appStyles.Content}>
-                                <Asset src={NoResults} message={message} />
+                                <Asset spinner />
                             </Container>
-                        )
-                    ) : 
-                    <Container className={appStyles.Content}>
-                        <Asset spinner />
-                    </Container>
-                    }
+                            }
+                        </Row>
+                    </div>
                 </Col>
             </Row>
         </Container>
