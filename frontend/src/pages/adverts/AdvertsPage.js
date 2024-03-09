@@ -9,6 +9,7 @@ import Row from "react-bootstrap/Row";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "./Advert";
+import Asset from "../../components/Asset";
 
 const AdvertsPage = () => {
     const [adverts, setAdverts] = useState({ results: [] });
@@ -22,7 +23,7 @@ const AdvertsPage = () => {
                     ...prevAdverts,
                     results: data, 
                 }));
-                setHasLoaded(true);
+                setHasLoaded(false);
             } catch (err) {
                 //console.log(err);
             }
@@ -48,7 +49,11 @@ const AdvertsPage = () => {
                         ) : (
                             <p>No adverts found</p>
                         )
-                    ) : null}
+                    ) : 
+                    <Container className={appStyles.Content}>
+                        <Asset spinner />
+                    </Container>
+                    }
                 </Col>
             </Row>
         </Container>
