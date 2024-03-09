@@ -34,8 +34,7 @@ const Home = () => {
                 <Link to={"/adverts/"}>
                     View all
                 </Link>
-            </Col>
-            
+            </Col>            
         </Row>
     </Container>
   );
