@@ -10,8 +10,9 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "./Advert";
 import Asset from "../../components/Asset";
+import NoResults from "../../assets/no-results.png";
 
-const AdvertsPage = () => {
+function AdvertsPage ({ message }) {
     const [adverts, setAdverts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -23,7 +24,7 @@ const AdvertsPage = () => {
                     ...prevAdverts,
                     results: data, 
                 }));
-                setHasLoaded(false);
+                setHasLoaded(true);
             } catch (err) {
                 //console.log(err);
             }
@@ -47,7 +48,9 @@ const AdvertsPage = () => {
                                 <Advert key={advert.id} {...advert} setAdverts={setAdverts} />
                             ))
                         ) : (
-                            <p>No adverts found</p>
+                            <Container className={appStyles.Content}>
+                                <Asset src={NoResults} message={message} />
+                            </Container>
                         )
                     ) : 
                     <Container className={appStyles.Content}>

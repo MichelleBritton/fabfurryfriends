@@ -26,7 +26,7 @@ function App() {
           <Route 
             exact 
             path="/adverts"
-            render={() => <AdvertsPage />}
+            render={() => <AdvertsPage message="No results found"/>}
           />
           <Route 
             exact 
