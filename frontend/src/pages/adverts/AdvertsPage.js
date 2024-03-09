@@ -7,24 +7,27 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import {axiosReq} from '../../api/axiosDefaults';
+import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "./Advert";
 
 const AdvertsPage = () => {
-    const [adverts, setAdverts] = useState({ results: []});
+    const [adverts, setAdverts] = useState({ results: [] });
 
     useEffect(() => {
         const fetchAdverts = async () => {
-            try {                
-                const {data} = await axiosReq.get("/adverts/");
-                console.log(data);
-                setAdverts(data);
-            } catch(err){
-                console.log(err);
+            try {
+                const { data } = await axiosReq.get("/adverts/");
+                console.log("Data received:", data);
+                setAdverts((prevAdverts) => ({
+                    ...prevAdverts,
+                    results: data, 
+                }));
+            } catch (err) {
+                //console.log(err);
             }
         };
 
-       fetchAdverts();
+        fetchAdverts();
     }, []);
 
     return (
@@ -43,8 +46,8 @@ const AdvertsPage = () => {
                     )}
                 </Col>
             </Row>
-        </Container>     
+        </Container>
     );
-}
+};
 
 export default AdvertsPage;
