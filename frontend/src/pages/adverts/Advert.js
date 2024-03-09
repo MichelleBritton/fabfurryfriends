@@ -58,7 +58,7 @@ const Advert = (props) => {
                             )}
                         </Media>
                     </Card.Body>                
-                    {dog_name && <Card.Title className="text-left">{dog_name}</Card.Title>}               
+                    {dog_name && <Card.Title className={`${appStyles.Teal} text-left`}>{dog_name}</Card.Title>}               
                     <Card.Body className={styles.CardBody}>
                         {content && <Card.Text>{content}</Card.Text>}
                     </Card.Body>
@@ -76,7 +76,7 @@ const Advert = (props) => {
                         </Media>
                     </Card.Body>
                     <Link to={`/adverts/${id}`}>
-                        {dog_name && <Card.Title className="text-left">{dog_name}</Card.Title>}
+                        {dog_name && <Card.Title className="text-center">{dog_name}</Card.Title>}
                     </Link>
                 </>
             )}

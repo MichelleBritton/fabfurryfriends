@@ -30,6 +30,10 @@
     border-radius: 20px;
 }
 
+.Teal {
+    color: #5ea5a4;
+}
+
 * {
     box-sizing: border-box;
 }
