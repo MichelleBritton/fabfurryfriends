@@ -12,20 +12,23 @@ import Advert from "./Advert";
 
 const AdvertsPage = () => {
     const [adverts, setAdverts] = useState({ results: [] });
+    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
         const fetchAdverts = async () => {
             try {
                 const { data } = await axiosReq.get("/adverts/");
-                console.log("Data received:", data);
                 setAdverts((prevAdverts) => ({
                     ...prevAdverts,
                     results: data, 
                 }));
+                setHasLoaded(true);
             } catch (err) {
                 //console.log(err);
             }
         };
+
+        setHasLoaded(false);
 
         fetchAdverts();
     }, []);
@@ -37,13 +40,15 @@ const AdvertsPage = () => {
                     left
                 </Col>
                 <Col className="ml-auto" md={8}>
-                    {adverts.results && adverts.results.length ? (
-                        adverts.results.map((advert) => (
-                            <Advert key={advert.id} {...advert} setAdverts={setAdverts} />
-                        ))
-                    ) : (
-                        <p>No adverts found</p>
-                    )}
+                    {hasLoaded ? (
+                        adverts.results.length ? (
+                            adverts.results.map((advert) => (
+                                <Advert key={advert.id} {...advert} setAdverts={setAdverts} />
+                            ))
+                        ) : (
+                            <p>No adverts found</p>
+                        )
+                    ) : null}
                 </Col>
             </Row>
         </Container>
