@@ -44,7 +44,7 @@ const Advert = (props) => {
 
     return (
         <Card className={appStyles.Content}>
-            <Card.Img src={image} alt={dog_name} />
+            <Card.Img src={image} alt={dog_name} className={appStyles.ImageRounded} />
             <Card.Body className={styles.CardBody}>
                 <Media className="d-flex align-items-center justify-content-between">   
                     <span>Updated: {updated_at}</span>
