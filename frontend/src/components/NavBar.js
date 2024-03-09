@@ -113,8 +113,8 @@ const NavBar = () => {
                         >
                             <i className="fas fa-dog"></i>Our Dogs
                         </NavLink>
-                        {currentUser ? loggedInIcons : loggedOutIcons}
                         {isAdmin ? createAdvertIcon : null}
+                        {currentUser ? loggedInIcons : loggedOutIcons}                        
                     </Nav>                        
                 </Navbar.Collapse>
             </Container>
