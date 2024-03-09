@@ -10,7 +10,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { Image } from "react-bootstrap";
 
-import Upload from "../../assets/upload.png";
+import defaultImage from "../../assets/default_advert.png"
 import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -74,8 +74,13 @@ function AdvertCreateForm() {
         formData.append('quick_fact_4', quick_fact_4);
         formData.append('quick_fact_5', quick_fact_5);
         formData.append('content', content);
-        formData.append('image', imageInput.current.files[0]);
-    
+
+        // Check if an image file is selected so that the default image
+        // can be used if no image has been uploaded
+        if (imageInput.current.files[0]) {
+            formData.append('image', imageInput.current.files[0]);
+        }
+            
         try {
             const {data} = await axiosReq.post('/adverts/', formData);
             history.push(`/adverts/${data.id}`);
@@ -257,8 +262,8 @@ function AdvertCreateForm() {
                                     </div>
                                 </>
                             ) : (
-                                <Form.Label className="d-flex justify-content-center" htmlFor="image-upload">
-                                    <Asset src={Upload} message="Click or tap to upload an image" />
+                                <Form.Label className="d-flex justify-content-center" htmlFor="image-upload">                                    
+                                    <Asset src={defaultImage} message="Click or tap to upload an image" />                                    
                                 </Form.Label>
                             )}
                            
@@ -272,9 +277,6 @@ function AdvertCreateForm() {
                        {textFields}
                     </Container>
                 </Col>
-                {/* <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-                    <Container className={appStyles.Content}>{textFields}</Container>
-                </Col> */}
             </Row>
         </Form>
     );
