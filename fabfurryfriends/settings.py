@@ -33,7 +33,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
         if 'SESSION_AUTH' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )]
+    )],
+    'DATETIME_FORMAT': '%d %b %Y',
 }
 
 REST_USE_JWT = True
