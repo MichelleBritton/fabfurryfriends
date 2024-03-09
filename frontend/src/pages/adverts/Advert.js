@@ -22,7 +22,7 @@ const Advert = (props) => {
         content,
         image,        
         advertPage,
-        setAdvert,
+        // setAdvert,
     } = props;
 
     const currentUser = useCurrentUser();
