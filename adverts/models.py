@@ -12,6 +12,7 @@ class Advert(models.Model):
     dog_name = models.CharField(max_length=255, blank=True)
     breed = models.CharField(max_length=255, blank=True)
     age = models.CharField(max_length=255, blank=True)
+    sex = models.CharField(max_length=255, blank=True)
     quick_fact_1 = models.CharField(max_length=255, blank=True)
     quick_fact_2 = models.CharField(max_length=255, blank=True)
     quick_fact_3 = models.CharField(max_length=255, blank=True)

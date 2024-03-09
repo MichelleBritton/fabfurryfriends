@@ -27,6 +27,7 @@ function AdvertCreateForm() {
         dog_name: "",
         breed: "",
         age: "",
+        sex: "",
         quick_fact_1: "",
         quick_fact_2: "",
         quick_fact_3: "",
@@ -36,7 +37,7 @@ function AdvertCreateForm() {
         image: "",
     });
     const {
-        dog_name, breed, age, quick_fact_1, quick_fact_2, 
+        dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
         quick_fact_3, quick_fact_4, quick_fact_5, content, image 
     } = advertData;
 
@@ -68,6 +69,7 @@ function AdvertCreateForm() {
         formData.append('dog_name', dog_name);
         formData.append('breed', breed);
         formData.append('age', age);
+        formData.append('sex', sex);
         formData.append('quick_fact_1', quick_fact_1);
         formData.append('quick_fact_2', quick_fact_2);
         formData.append('quick_fact_3', quick_fact_3);
@@ -134,6 +136,21 @@ function AdvertCreateForm() {
                 />
             </Form.Group>
             {errors.age?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                    {message}
+                </Alert>
+            ))}
+
+            <Form.Group controlId="sex">
+                <Form.Label>Sex</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="sex"
+                    value={sex}
+                    onChange={handleChange}
+                />
+            </Form.Group>
+            {errors.sex?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
                     {message}
                 </Alert>

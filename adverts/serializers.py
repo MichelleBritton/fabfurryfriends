@@ -18,6 +18,6 @@ class AdvertSerializer(serializers.ModelSerializer):
         model = Advert
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'dog_name',
-            'breed', 'age', 'quick_fact_1', 'quick_fact_2', 'quick_fact_3', 
+            'breed', 'age', 'sex', 'quick_fact_1', 'quick_fact_2', 'quick_fact_3', 
             'quick_fact_4', 'quick_fact_5', 'content', 'image', 'is_owner', 
         ]
