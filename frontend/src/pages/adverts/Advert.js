@@ -1,6 +1,8 @@
 import React from 'react';
 
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Advert.module.css";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -42,7 +44,7 @@ const Advert = (props) => {
 
     return (
         <Col className="ml-auto" md={8}>
-            <Card className={styles.Advert}>
+            <Card className={appStyles.Content}>
                 <Card.Img src={image} alt={dog_name} />
                 <Card.Body className={styles.CardBody}>
                     <Media className="d-flex align-items-center justify-content-between">   

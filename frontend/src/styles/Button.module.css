@@ -7,37 +7,37 @@
     margin-left: 2px;
     margin-right: 2px;
     min-width: 75px;
-  }
+}
   
-  .Button:hover {
+.Button:hover {
     opacity: 0.8;
     border-color: transparent;
     cursor: pointer;
-  }
+}
   
-  .Button:hover:active {
+.Button:hover:active {
     background-color: #2142b2 !important;
-  }
+}
   
-  .Button:active {
+.Button:active {
     background-color: #2142b2 !important;
-  }
+}
   
-  .Button:focus {
+.Button:focus {
     background-color: #2142b2;
-  }
+}
   
-  .Wide {
+.Wide {
     padding: 10px 50px;
     width: 100%;
-  }
+}
   
-  .Bright:hover {
+.Bright:hover {
     background-color: #5ea5a4;
     color: #ffffff;
-  }
+}
      
-  .Bright {
+.Bright {
     background-color: #815ea5;
     color: #fff;
-  }
+}
