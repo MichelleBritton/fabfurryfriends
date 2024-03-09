@@ -1,6 +1,6 @@
 import React from 'react';
 
-//import styles from "../../styles/Advert.module.css";
+import styles from "../styles/QuickFacts.module.css";
 
 import { Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
@@ -18,22 +18,22 @@ const QuickFacts = (props) => {
     } = props;
 
     return (
-        <Col className="ml-auto" md={3}>
-            <Card>
+        <Col className="mr-auto" md={3}>
+            <Card className={styles.QuickFacts}>
                 <Card.Body>  
-                    {dog_name && <Card.Title>Name: {dog_name}</Card.Title>}                      
-                    {breed && <Card.Title>Breed: {breed}</Card.Title>}
-                    {age && <Card.Title>Age: {age}</Card.Title>}
-                    <h2>Key points to note:</h2>
-                    {quick_fact_1 && <Card.Title>{quick_fact_1}</Card.Title>}
-                    {quick_fact_2 && <Card.Title>{quick_fact_2}</Card.Title>}
-                    {quick_fact_3 && <Card.Title>{quick_fact_3}</Card.Title>}
-                    {quick_fact_4 && <Card.Title>{quick_fact_4}</Card.Title>}
-                    {quick_fact_5 && <Card.Title>{quick_fact_5}</Card.Title>}
+                    <Card.Title className={styles.CardTitle}>Quick Facts</Card.Title>                                      
+                    {dog_name && <Card.Text>Name: {dog_name}</Card.Text>}                      
+                    {breed && <Card.Text>Breed: {breed}</Card.Text>}
+                    {age && <Card.Text>Age: {age}</Card.Text>}
+                    {quick_fact_1 && <Card.Text>{quick_fact_1}</Card.Text>}
+                    {quick_fact_2 && <Card.Text>{quick_fact_2}</Card.Text>}
+                    {quick_fact_3 && <Card.Text>{quick_fact_3}</Card.Text>}
+                    {quick_fact_4 && <Card.Text>{quick_fact_4}</Card.Text>}
+                    {quick_fact_5 && <Card.Text>{quick_fact_5}</Card.Text>}    
                 </Card.Body>
             </Card>
         </Col>
-    )
+    );
 }
 
 export default QuickFacts;

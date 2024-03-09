@@ -63,7 +63,7 @@ const Advert = (props) => {
                 </Card.Body>
             </Card>
         </Col>
-    )
+    );
 }
 
 export default Advert;

@@ -1,0 +1,10 @@
+.QuickFacts {
+    background-color: #ffffff;
+    border: 2px solid #5ea5a4;
+    border-radius: 20px;
+    padding: 30px;
+}
+.CardTitle {
+    color: #a55e5f;
+    font-size: 1.8rem;
+}
