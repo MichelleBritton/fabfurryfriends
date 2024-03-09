@@ -34,13 +34,15 @@ function AdvertPage() {
     }, [id]);
 
     return (
-        <Container className={`${appStyles.MainContent}`} fluid>
+        <Container className={appStyles.MainContent} fluid>
             <Row>
                 <Col className="mr-auto" md={3}>
                     <BackButton />
                     <QuickFacts {...advert.results[0]} setAdvert={setAdvert} advertPage />
                 </Col>
-                <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
+                <Col className="ml-auto" md={8}>
+                    <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
+                </Col>
             </Row>
         </Container>                     
     );
