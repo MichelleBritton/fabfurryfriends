@@ -9,6 +9,7 @@ import LoginForm from "./pages/auth/LoginForm";
 import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
+import Home from "./pages/Home/Home";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -21,7 +22,7 @@ function App() {
           <Route 
             exact 
             path="/"
-            render={() => <h1>Home</h1>}
+            render={() => <Home />}
           />
           <Route 
             exact 

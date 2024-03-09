@@ -38,7 +38,7 @@ function AdvertsPage ({ message }) {
     return (
         <Container className={`${appStyles.MainContent}`} fluid>
             <Row>
-                <Col className={`${appStyles.Content} mr-auto`} md={3}>
+                <Col className={`${appStyles.Content} mr-auto mb-5`} md={3}>
                     left
                 </Col>
                 <Col className="ml-auto" md={8}>
