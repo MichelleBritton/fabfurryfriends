@@ -41,7 +41,7 @@ function Home ({ message }) {
         const shuffledAdverts = shuffle(advertData.results);
         const selectAdverts = shuffledAdverts.slice(0, 4);
         setRandomAdverts(selectAdverts);
-    }, [advertData.results]); 
+    }, [advertData]); 
 
     return (
         <Container fluid className="p-0">

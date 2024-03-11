@@ -20,9 +20,9 @@ export const AdvertDataProvider = ({ children }) => {
                 const { data } = await axiosReq.get("/adverts/");
                 setAdvertData((prevAdvertData) => ({
                     ...prevAdvertData,
-                    results: data, 
+                    ...data, 
                 }));
-                setHasLoaded(true);
+                setHasLoaded(true);           
             } catch (err) {
                 //console.log(err);
             }
