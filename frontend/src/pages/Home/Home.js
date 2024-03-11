@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Home.module.css";
@@ -18,6 +18,30 @@ import Asset from "../../components/Asset";
 function Home ({ message }) {
     const advertData = useAdvertData(); 
     const setAdverts = useSetAdvertData(); 
+
+    /**
+     * Shuffle the adverts array
+     * Code Credit: https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+     * Fisher-Yates shuffle algorithm
+     */
+    function shuffle(a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
+
+    const [randomAdverts, setRandomAdverts] = useState([]);
+
+    useEffect(() => {
+        const shuffledAdverts = shuffle(advertData.results);
+        const selectAdverts = shuffledAdverts.slice(0, 4);
+        setRandomAdverts(selectAdverts);
+    }, [advertData.results]); 
 
     return (
         <Container fluid className="p-0">
@@ -39,8 +63,8 @@ function Home ({ message }) {
                     <h2 className={`${appStyles.Red} mb-5`}>We are looking for homes...</h2>
                     
                         <Row className="d-flex flex-row flex-wrap justify-content-betwee px-5">
-                            {advertData.results.length ? (
-                                advertData.results.slice(0,4).map((advert) => (  
+                            {randomAdverts.length ? (
+                                randomAdverts.map((advert) => (  
                                     <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
                                         <Advert {...advert} setAdverts={setAdverts} /> 
                                     </Col>                       
