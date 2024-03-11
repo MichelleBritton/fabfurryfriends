@@ -10,6 +10,7 @@ import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
 import Home from "./pages/Home/Home";
+import Footer from "./components/Footer";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -44,6 +45,7 @@ function App() {
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>
+      <Footer />
     </div>
   );
 }
