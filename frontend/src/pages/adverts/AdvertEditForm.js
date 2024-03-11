@@ -12,9 +12,13 @@ import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
 import { useHistory, useParams } from "react-router-dom";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function AdvertEditForm() {
+    const currentUser = useCurrentUser();
+    const isAdmin = currentUser?.is_admin_user;
     const [errors, setErrors] = useState({});
 
     const [advertData, setAdvertData] = useState({
@@ -45,10 +49,10 @@ function AdvertEditForm() {
                 const {data} = await axiosReq.get(`/adverts/${id}/`);
                 const {
                     dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
-                    quick_fact_3, quick_fact_4, quick_fact_5, content, image, is_owner
+                    quick_fact_3, quick_fact_4, quick_fact_5, content, image
                 } = data;
 
-                is_owner ? setAdvertData({dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
+                isAdmin ? setAdvertData({dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
                     quick_fact_3, quick_fact_4, quick_fact_5, content, image}) : history.push('/');
             } catch(err) {
                 // console.log(err);
@@ -56,7 +60,7 @@ function AdvertEditForm() {
         };
 
         handleMount();
-    }, [history, id]);
+    }, [history, id, isAdmin]);
 
     const handleChange = (event) => {
         setAdvertData({
