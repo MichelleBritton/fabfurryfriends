@@ -7,3 +7,9 @@
         flex-basis: 25%;
     }
 }
+
+.Card img {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}

@@ -19,25 +19,23 @@ function AdvertsPage ({ message }) {
     return (
         <Container className={`${appStyles.MainContent}`} fluid>
             <Row>
-                <Col className={`${appStyles.Content} mr-auto mb-5`} md={3}>
+                <Col className={`${appStyles.Content} mr-auto mb-5`} md={2}>
                     left
                 </Col>
-                <Col className="ml-auto" md={8}>
-                    <div className="d-flex flex-row flex-wrap justify-content-between">
-                        <Row>
-                            {advertData.results.length ? (
-                                advertData.results.map((advert) => (  
-                                    <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
-                                        <Advert {...advert} setAdverts={setAdverts} /> 
-                                    </Col>                       
-                                ))
-                            ) : (
-                                <Container className={appStyles.Content}>
-                                    <Asset src={NoResults} message={message} />
-                                </Container>
-                            )}
-                        </Row>
-                    </div>
+                <Col className="ml-auto" md={9}>
+                    <Row className="d-flex flex-row flex-wrap justify-content-between">
+                        {advertData.results.length ? (
+                            advertData.results.map((advert) => (  
+                                <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                    <Advert {...advert} setAdverts={setAdverts} /> 
+                                </Col>                       
+                            ))
+                        ) : (
+                            <Container className={appStyles.Content}>
+                                <Asset src={NoResults} message={message} />
+                            </Container>
+                        )}
+                    </Row>
                 </Col>
             </Row>
         </Container>
