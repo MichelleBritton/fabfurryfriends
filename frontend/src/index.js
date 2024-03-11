@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
+import { AdvertDataProvider } from "./contexts/AdvertsContext";
 
 ReactDOM.render(
     <Router>
       <CurrentUserProvider>
+        <AdvertDataProvider>
           <App />
+        </AdvertDataProvider>          
       </CurrentUserProvider>
     </Router>,
   document.getElementById("root")
