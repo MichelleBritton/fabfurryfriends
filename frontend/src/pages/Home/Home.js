@@ -36,19 +36,21 @@ function Home ({ message }) {
             </Row>
             <Row>
                 <Col className="text-center py-5">
-                    <h2 className={appStyles.Red}>We are looking for homes...</h2>
-
-                    {advertData.results.length ? (
-                        advertData.results.slice(0,4).map((advert) => (  
-                            <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
-                                <Advert {...advert} setAdverts={setAdverts} /> 
-                            </Col>                       
-                        ))
-                    ) : (
-                        <Container className={appStyles.Content}>
-                            <Asset src={NoResults} message={message} />
-                        </Container>
-                    )}
+                    <h2 className={`${appStyles.Red} mb-5`}>We are looking for homes...</h2>
+                    
+                        <Row className="d-flex flex-row flex-wrap justify-content-betwee px-5">
+                            {advertData.results.length ? (
+                                advertData.results.slice(0,4).map((advert) => (  
+                                    <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                        <Advert {...advert} setAdverts={setAdverts} /> 
+                                    </Col>                       
+                                ))
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset src={NoResults} message={message} />
+                                </Container>
+                            )}
+                        </Row>                    
 
                     <Link to={"/adverts/"}>
                         View all

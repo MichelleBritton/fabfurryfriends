@@ -12,7 +12,6 @@ import { Media } from "react-bootstrap";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 
-
 const Advert = (props) => {
     const {
         id,
@@ -21,7 +20,6 @@ const Advert = (props) => {
         content,
         image,        
         advertPage,
-        // setAdvert,
     } = props;
 
     const currentUser = useCurrentUser();

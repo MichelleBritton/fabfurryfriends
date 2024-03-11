@@ -82,3 +82,19 @@
         font-size: 2.4rem;
     }
 }
+
+.Card {
+    margin-bottom: 30px;
+}
+
+@media only screen and (min-width:1800px) {	
+    .Card {
+        flex-basis: 25%;
+    }
+}
+
+.Card img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
