@@ -9,6 +9,7 @@ import LoginForm from "./pages/auth/LoginForm";
 import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
+import AdvertEditForm from "./pages/adverts/AdvertEditForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
 
@@ -40,8 +41,21 @@ function App() {
             path="/login"
             render={() => <LoginForm />}
           />
-          <Route exact path="/adverts/create" render={() => <AdvertCreateForm />} />
-          <Route exact path="/adverts/:id" render={() => <AdvertPage />} />
+          <Route 
+            exact 
+            path="/adverts/create" 
+            render={() => <AdvertCreateForm />} 
+          />
+          <Route 
+            exact 
+            path="/adverts/:id" 
+            render={() => <AdvertPage />} 
+          />
+          <Route 
+            exact 
+            path="/adverts/:id/edit" 
+            render={() => <AdvertEditForm />} 
+          />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>
