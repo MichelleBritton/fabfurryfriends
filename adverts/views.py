@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from rest_framework.exceptions import PermissionDenied
 from fabfurryfriends.permissions import IsOwnerOrAdmin
 from .models import Advert
@@ -12,6 +12,14 @@ class AdvertList(generics.ListCreateAPIView):
     serializer_class = AdvertSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Advert.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'dog_name',
+        'breed',
+        'content',
+    ]
 
     # Check if the user is an admin
     def perform_create(self, serializer):
