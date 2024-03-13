@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -12,18 +12,20 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 
 import { useAdvertData, useSetAdvertData, AdvertDataProvider } from "../../contexts/AdvertsContext";
+import { useQuery, useSetQuery } from "../../contexts/QueryContext";
 import Advert from "./Advert";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
 function AdvertsPage ({ message }) {
     const advertData = useAdvertData(); 
-    const setAdverts = useSetAdvertData(); 
-    const [query, setQuery] = useState("");    
+    const setAdverts = useSetAdvertData();  
+    const query = useQuery();
+    const setQuery = useSetQuery();
 
     return (  
         <AdvertDataProvider query={query}>
-                <Container className={`${appStyles.MainContent}`} fluid>
+            <Container className={`${appStyles.MainContent}`} fluid>
                 <Row>
                     <Col className={`${appStyles.Content} mr-auto mb-5`} md={2}>
                         <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -64,8 +66,7 @@ function AdvertsPage ({ message }) {
                     </Col>
                 </Row>
             </Container>
-        </AdvertDataProvider>     
-       
+        </AdvertDataProvider>  
     );
 };
 

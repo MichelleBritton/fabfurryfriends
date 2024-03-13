@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import { AdvertDataProvider } from "./contexts/AdvertsContext";
+import { QueryProvider } from "./contexts/QueryContext";
 
 ReactDOM.render(
     <Router>
       <CurrentUserProvider>
         <AdvertDataProvider>
-          <App />
+          <QueryProvider>
+            <App />
+          </QueryProvider>          
         </AdvertDataProvider>          
       </CurrentUserProvider>
     </Router>,
