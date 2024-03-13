@@ -1,5 +1,7 @@
 import React from "react";
 
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import appStyles from "../../App.module.css";
 import styles from "../../styles/AdvertsPage.module.css";
 import NoResults from "../../assets/no-results.png";
@@ -11,6 +13,7 @@ import Row from "react-bootstrap/Row";
 import { useAdvertData, useSetAdvertData } from "../../contexts/AdvertsContext";
 import Advert from "./Advert";
 import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 function AdvertsPage ({ message }) {
     const advertData = useAdvertData(); 
@@ -23,13 +26,22 @@ function AdvertsPage ({ message }) {
                     left
                 </Col>
                 <Col className="ml-auto" md={9}>
-                    <Row className="d-flex flex-row flex-wrap justify-content-between">
+                    <Row>
                         {advertData.results.length ? (
-                            advertData.results.map((advert) => (  
-                                <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
-                                    <Advert {...advert} setAdverts={setAdverts} /> 
-                                </Col>                       
-                            ))
+                            <InfiniteScroll 
+                                children={
+                                    advertData.results.map((advert) => (  
+                                        <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                            <Advert {...advert} setAdverts={setAdverts} /> 
+                                        </Col>                  
+                                    ))
+                                }
+                                dataLength={advertData.results.length}
+                                loader={<Asset spinner />}
+                                hasMore={!!advertData.next}
+                                next={() => {fetchMoreData(advertData, setAdverts)}}    
+                                className={"d-flex flex-row flex-wrap justify-content-between"}                            
+                            />
                         ) : (
                             <Container className={appStyles.Content}>
                                 <Asset src={NoResults} message={message} />
