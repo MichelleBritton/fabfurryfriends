@@ -17,7 +17,7 @@ export const AdvertDataProvider = ({ children }) => {
     useEffect(() => {
         const fetchAdverts = async () => {
             try {
-                const { data } = await axiosReq.get("/adverts/");
+                const { data } = await axiosReq.get(`/adverts/?${filter}search=${query}`);
                 setAdvertData((prevAdvertData) => ({
                     ...prevAdvertData,
                     ...data, 
@@ -31,7 +31,7 @@ export const AdvertDataProvider = ({ children }) => {
         setHasLoaded(false);
 
         fetchAdverts();
-    }, []);
+    }, [filter, query]);
 
     return hasLoaded ? (
         <AdvertDataContext.Provider value={advertData}>

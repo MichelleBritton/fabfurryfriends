@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -9,21 +9,32 @@ import NoResults from "../../assets/no-results.png";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
 
 import { useAdvertData, useSetAdvertData } from "../../contexts/AdvertsContext";
 import Advert from "./Advert";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
-function AdvertsPage ({ message }) {
+function AdvertsPage ({ message, filter="" }) {
     const advertData = useAdvertData(); 
     const setAdverts = useSetAdvertData(); 
+    const [query, setQuery] = useState("");
 
     return (
         <Container className={`${appStyles.MainContent}`} fluid>
             <Row>
                 <Col className={`${appStyles.Content} mr-auto mb-5`} md={2}>
-                    left
+                    <i className={`fas fa-search ${styles.SearchIcon}`} />
+                    <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
+                        <Form.Control 
+                            value={query} 
+                            onChange={(event) => setQuery(event.target.value)} 
+                            type="text" 
+                            className="mr-sm-2" 
+                            placeholder="Search Adverts" 
+                        />
+                    </Form>
                 </Col>
                 <Col className="ml-auto" md={9}>
                     <Row>
