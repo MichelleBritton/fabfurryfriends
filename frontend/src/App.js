@@ -3,7 +3,6 @@ import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
-import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
 import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
@@ -14,7 +13,6 @@ import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
 
 function App() {
-  const currentUser = useCurrentUser();
   
   return (
     <div className={styles.App}>
@@ -29,7 +27,11 @@ function App() {
           <Route 
             exact 
             path="/adverts"
-            render={() => <AdvertsPage message="No results found"/>}
+            render={() => 
+              <AdvertsPage 
+                message="No results found. Adjust the search keyword"
+              />
+            }
           />
           <Route 
             exact 

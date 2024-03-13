@@ -10,19 +10,19 @@ export const SetAdvertDataContext = createContext();
 export const useAdvertData = () => useContext(AdvertDataContext);
 export const useSetAdvertData = () => useContext(SetAdvertDataContext);
 
-export const AdvertDataProvider = ({ children }) => {
+export const AdvertDataProvider = ({ children, query="" }) => {
     const [advertData, setAdvertData] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
         const fetchAdverts = async () => {
             try {
-                const { data } = await axiosReq.get(`/adverts/?${filter}search=${query}`);
+                const { data } = await axiosReq.get(`/adverts/?search=${query}`);
                 setAdvertData((prevAdvertData) => ({
                     ...prevAdvertData,
                     ...data, 
                 }));
-                setHasLoaded(true);           
+                setHasLoaded(true);                           
             } catch (err) {
                 //console.log(err);
             }
@@ -30,8 +30,14 @@ export const AdvertDataProvider = ({ children }) => {
 
         setHasLoaded(false);
 
-        fetchAdverts();
-    }, [filter, query]);
+        const timer = setTimeout(() => {
+            fetchAdverts();
+        }, 1000);
+        return () => {
+            clearTimeout(timer);
+        };
+        
+    }, [query]);
 
     return hasLoaded ? (
         <AdvertDataContext.Provider value={advertData}>
