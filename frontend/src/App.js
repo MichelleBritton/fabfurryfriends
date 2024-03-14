@@ -22,7 +22,9 @@ function App() {
           <Route 
             exact 
             path="/"
-            render={() => <Home />}
+            render={() => <Home 
+              message="No results found."
+            />}
           />
           <Route 
             exact 

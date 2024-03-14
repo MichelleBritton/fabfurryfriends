@@ -11,13 +11,14 @@ import { Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-import { useAdvertData, useSetAdvertData } from "../../contexts/AdvertsContext";
+import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "../adverts/Advert";
 import Asset from "../../components/Asset";
 
 function Home ({ message }) {
-    const advertData = useAdvertData(); 
-    const setAdverts = useSetAdvertData(); 
+    const [adverts, setAdverts] = useState({ results: [] });
+    const [hasLoaded, setHasLoaded] = useState(false);
+    const [randomAdverts, setRandomAdverts] = useState([]);
 
     /**
      * Shuffle the adverts array
@@ -35,13 +36,29 @@ function Home ({ message }) {
         return a;
     }
 
-    const [randomAdverts, setRandomAdverts] = useState([]);
+    useEffect(() => {
+        const fetchAdverts = async () => {
+            try {
+                const { data } = await axiosReq.get(`/adverts/`);
+                setAdverts(data);
+                setHasLoaded(true);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+
+        setHasLoaded(false);
+        
+        fetchAdverts();         
+    }, []);
 
     useEffect(() => {
-        const shuffledAdverts = shuffle(advertData.results);
-        const selectAdverts = shuffledAdverts.slice(0, 4);
-        setRandomAdverts(selectAdverts);
-    }, [advertData]); 
+        if (adverts.results.length > 0) {
+            const shuffledAdverts = shuffle(adverts.results);
+            const selectAdverts = shuffledAdverts.slice(0, 4);
+            setRandomAdverts(selectAdverts);
+        }
+    }, [adverts]);
 
     return (
         <Container fluid className="p-0">
@@ -62,19 +79,27 @@ function Home ({ message }) {
                 <Col className="text-center py-5">
                     <h2 className={`${appStyles.Red} mb-5`}>We are looking for homes...</h2>
                     
-                        <Row className="d-flex flex-row flex-wrap justify-content-betwee px-5">
-                            {randomAdverts.length ? (
-                                randomAdverts.map((advert) => (  
-                                    <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
-                                        <Advert {...advert} setAdverts={setAdverts} /> 
-                                    </Col>                       
-                                ))
-                            ) : (
-                                <Container className={appStyles.Content}>
-                                    <Asset src={NoResults} message={message} />
-                                </Container>
-                            )}
-                        </Row>                    
+                    <Row className="d-flex flex-row flex-wrap justify-content-betwee px-5">
+                        {hasLoaded ? (
+                            <>
+                                {randomAdverts.length ? (
+                                    randomAdverts.map((advert) => (  
+                                        <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                            <Advert {...advert} setAdverts={setRandomAdverts} /> 
+                                        </Col>                       
+                                    ))                    
+                                ) : (
+                                    <Container className={appStyles.Content}>
+                                        <Asset src={NoResults} message={message} />
+                                    </Container>
+                                )}
+                            </>  
+                        ) : (
+                            <Container className={appStyles.Content}>
+                                <Asset spinner />
+                            </Container>
+                        )}
+                    </Row>                    
 
                     <Link to={"/adverts/"}>
                         View all
