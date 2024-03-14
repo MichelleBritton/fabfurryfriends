@@ -60,36 +60,32 @@ function AdvertsPage ({ message }) {
                     </Form>                  
                 </Col>
                 <Col className="ml-auto" md={9}>
-                    <div className="d-flex flex-row flex-wrap justify-content-between">
-                        <Row>
-                            {hasLoaded ? (
-                                adverts.results.length ? (
-                                    <InfiniteScroll 
-                                        children={
-                                            adverts.results.map((advert) => (  
-                                                <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
-                                                    <Advert {...advert} setAdverts={setAdverts} /> 
-                                                </Col>                  
-                                            ))
-                                        }
-                                        dataLength={adverts.results.length}
-                                        loader={<Asset spinner />}
-                                        hasMore={!!adverts.next}
-                                        next={() => {fetchMoreData(adverts, setAdverts)}}    
-                                        className={"d-flex flex-row flex-wrap justify-content-between"}                            
-                                    />
-                                ) : (
-                                    <Container className={appStyles.Content}>
-                                        <Asset src={NoResults} message={message} />
-                                    </Container>
-                                )
-                            ) : 
+                    {hasLoaded ? (
+                        adverts.results.length ? (
+                            <InfiniteScroll 
+                                children={
+                                    adverts.results.map((advert) => (  
+                                        <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                            <Advert {...advert} setAdverts={setAdverts} /> 
+                                        </Col>                  
+                                    ))
+                                }
+                                dataLength={adverts.results.length}
+                                loader={<Asset spinner />}
+                                hasMore={!!adverts.next}
+                                next={() => {fetchMoreData(adverts, setAdverts)}}    
+                                className={"d-flex flex-row flex-wrap justify-content-between"}                            
+                            />
+                        ) : (
                             <Container className={appStyles.Content}>
-                                <Asset spinner />
+                                <Asset src={NoResults} message={message} />
                             </Container>
-                            }
-                        </Row>
-                    </div>
+                        )
+                    ) : 
+                    <Container className={appStyles.Content}>
+                        <Asset spinner />
+                    </Container>
+                    }                        
                 </Col>
             </Row>
         </Container>
