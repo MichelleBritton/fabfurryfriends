@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Image } from "react-bootstrap";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
@@ -15,14 +14,16 @@ import Asset from "../../components/Asset";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataContext";
 import { axiosReq } from "../../api/axiosDefaults";
+import Avatar from "../../components/Avatar";
 
-function ProfilePage() {
+function ProfilePage( props ) {
     const [hasLoaded, setHasLoaded] = useState(false);
     const currentUser = useCurrentUser();
     const {id} = useParams();
     const setProfileData = useSetProfileData();
     const { pageProfile } = useProfileData();
     const [profile] = pageProfile.results;
+    const {imageSize=80} = props;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,11 +49,7 @@ function ProfilePage() {
             <Col className={appStyles.Content}>
                 <Row>
                     <Col>
-                        <Image 
-                            className={styles.ProfileImage} 
-                            roundedCircle
-                            src={profile?.image}
-                        />
+                        <Avatar src={profile?.image} height={imageSize} />                       
                         <h3>{profile?.owner}'s Profile</h3>
                     </Col>
                 </Row>
