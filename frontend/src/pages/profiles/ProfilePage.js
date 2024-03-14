@@ -8,7 +8,6 @@ import Container from "react-bootstrap/Container";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
 
 import Asset from "../../components/Asset";
 import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataContext";
@@ -50,9 +49,9 @@ function ProfilePage( props ) {
         <Row>
             <Col className={appStyles.Content}>
                 <Row>
-                    <Col>
+                    <Col className={`${styles.Border} d-flex flex-row justify-content-center align-items-center py-5 mb-5`}>
                         <Avatar src={profile?.image} height={imageSize} />                       
-                        <h3>{profile?.owner}'s Profile</h3>
+                        <h3 className={appStyles.Red}>{profile?.owner}'s Profile</h3>
                     </Col>
                 </Row>
                 <Row>
