@@ -10,6 +10,9 @@ import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
 import AdvertEditForm from "./pages/adverts/AdvertEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
 
@@ -65,6 +68,21 @@ function App() {
             exact 
             path="/profiles/:id" 
             render ={() => <ProfilePage />} 
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
           />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>

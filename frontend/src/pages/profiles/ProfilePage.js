@@ -14,6 +14,7 @@ import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataCo
 import { axiosReq } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage( props ) {
     const {imageSize=80} = props;
@@ -45,10 +46,11 @@ function ProfilePage( props ) {
     }, [id, setProfileData]);
 
     const mainProfile = (
-        <>
+        <>        
         <Row>
             <Col className={appStyles.Content}>
                 <Row>
+                    {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
                     <Col className={`${styles.Border} d-flex flex-row justify-content-center align-items-center py-5 mb-5`}>
                         <Avatar src={profile?.image} height={imageSize} />                       
                         <h3 className={appStyles.Red}>{profile?.owner}'s Profile</h3>
