@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -11,20 +11,22 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import Asset from "../../components/Asset";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataContext";
 import { axiosReq } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function ProfilePage( props ) {
+    const {imageSize=80} = props;
     const [hasLoaded, setHasLoaded] = useState(false);
-    const currentUser = useCurrentUser();
     const {id} = useParams();
     const setProfileData = useSetProfileData();
     const { pageProfile } = useProfileData();
     const [profile] = pageProfile.results;
-    const {imageSize=80} = props;
-
+    const history = useHistory();
+    const currentUser = useCurrentUser();
+    const isAdmin = currentUser && currentUser.is_admin_user;
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -230,14 +232,18 @@ function ProfilePage( props ) {
         <Row>
             <Col>                
                 <Container className={`${appStyles.MainContent}`} fluid>
-                {hasLoaded ? (
-                    <>
-                    {mainProfile}
-                    
-                    </>
-                ) : (
-                    <Asset spinner />
-                )}
+                    {hasLoaded ? (
+                        profile?.is_owner || isAdmin ? (
+                            <>
+                                {mainProfile} 
+                            </>  
+                        ) : (
+                            // !! ADD A NOT AUTHORISED MESSAGE HERE !!
+                            history.push('/')
+                        )
+                    ) : (
+                        <Asset spinner />
+                    )}
                 </Container>
             </Col>        
         </Row>

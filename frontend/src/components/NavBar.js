@@ -46,7 +46,7 @@ const NavBar = () => {
                 exact
                 className="ml-lg-4"
                 activeClassName={styles.Active}
-                to="/profile"
+                to={`/profiles/${currentUser?.profile_id}`}
             >
                 <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
             </NavLink>
