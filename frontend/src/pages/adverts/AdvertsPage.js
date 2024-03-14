@@ -47,7 +47,7 @@ function AdvertsPage ({ message }) {
     return (
         <Container className={`${appStyles.MainContent}`} fluid>
             <Row>
-                <Col className={`${appStyles.Content} mr-auto mb-5`} md={2}>
+                <Col className={`${appStyles.Content} mr-auto mb-5`} xs={12} lg={3} xl={2}>
                     <i className={`fas fa-search ${styles.SearchIcon}`} />
                     <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
                         <Form.Control 
@@ -59,7 +59,7 @@ function AdvertsPage ({ message }) {
                         />
                     </Form>                  
                 </Col>
-                <Col className="ml-auto" md={9}>
+                <Col className="ml-auto" lg={9} xl={10}>
                     {hasLoaded ? (
                         adverts.results.length ? (
                             <InfiniteScroll 
