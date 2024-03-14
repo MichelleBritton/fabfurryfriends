@@ -9,6 +9,7 @@ import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
 import AdvertEditForm from "./pages/adverts/AdvertEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
 
@@ -59,6 +60,11 @@ function App() {
             exact 
             path="/adverts/:id/edit" 
             render={() => <AdvertEditForm />} 
+          />
+          <Route 
+            exact 
+            path="/profiles/:id" 
+            render ={() => <ProfilePage />} 
           />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
