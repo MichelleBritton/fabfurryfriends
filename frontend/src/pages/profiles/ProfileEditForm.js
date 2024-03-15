@@ -21,7 +21,7 @@ const ProfileEditForm = () => {
     const { id } = useParams();
     const history = useHistory();
     const imageFile = useRef();
-
+    const [maritalStatusOptions, setMaritalStatusOptions] = useState([]);
     const [profileData, setProfileData] = useState({
         name: "",
         email: "",
@@ -54,9 +54,23 @@ const ProfileEditForm = () => {
         previously_owned, why, sex, preferred_age,
         when, activities, image
     } = profileData;
-
     const [errors, setErrors] = useState({});
 
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchMaritalStatusOptions = async () => {
+            try {
+                const response = await axiosReq.get('/maritalstatus/'); 
+                if (isMounted) setMaritalStatusOptions(response.data);
+            } catch (err) {
+                console.log('Error fetching marital status options:', err);
+            }
+        };
+        
+        fetchMaritalStatusOptions();
+        return () => { isMounted = false };
+    }, []);
+    
     useEffect(() => {
         let isMounted = true;  
         const handleMount = async () => {
@@ -97,6 +111,13 @@ const ProfileEditForm = () => {
         });
     };
 
+    // const handleMaritalStatusChange = (event) => {
+    //     setProfileData({
+    //         ...profileData,
+    //         marital_status: event.target.value,
+    //     });
+    // };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -132,15 +153,15 @@ const ProfileEditForm = () => {
                 ...currentUser,
                 profile_image: data.image,
             }));
+            console.log(profileData);
             history.goBack();
         } catch (err) {
             // console.log(err);
             setErrors(err.response?.data);
         }
     };
-
     console.log(marital_status);
-
+    
     const textFields = (
         <>
         <Form.Group>
@@ -206,18 +227,17 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Marital Status</Form.Label>
-            <Form.Control       
-                as="select"       
-                value={marital_status}
-                onChange={handleChange}
-                name="marital_status"
-            >                
-                <option>Single</option>
-                <option>Married</option>
-                <option>Widowed</option>
-                <option>Divorced</option>
-                <option>Separated</option>
-                <option>Cohabiting</option>
+                <Form.Control
+                    as="select"
+                    value={marital_status}
+                    onChange={handleChange}
+                    name="marital_status"
+                >
+                    {maritalStatusOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
             </Form.Control>
         </Form.Group>
         {errors?.marital_status?.map((message, idx) => (
