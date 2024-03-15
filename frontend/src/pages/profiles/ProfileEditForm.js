@@ -21,7 +21,7 @@ const ProfileEditForm = () => {
     const { id } = useParams();
     const history = useHistory();
     const imageFile = useRef();
-    const [maritalStatusOptions, setMaritalStatusOptions] = useState([]);
+    //const [maritalStatusOptions, setMaritalStatusOptions] = useState([]);
     const [profileData, setProfileData] = useState({
         name: "",
         email: "",
@@ -56,20 +56,20 @@ const ProfileEditForm = () => {
     } = profileData;
     const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        let isMounted = true; 
-        const fetchMaritalStatusOptions = async () => {
-            try {
-                const response = await axiosReq.get('/maritalstatus/'); 
-                if (isMounted) setMaritalStatusOptions(response.data);
-            } catch (err) {
-                console.log('Error fetching marital status options:', err);
-            }
-        };
+    // useEffect(() => {
+    //     let isMounted = true; 
+    //     const fetchMaritalStatusOptions = async () => {
+    //         try {
+    //             const response = await axiosReq.get('/maritalstatus/'); 
+    //             if (isMounted) setMaritalStatusOptions(response.data);
+    //         } catch (err) {
+    //             console.log('Error fetching marital status options:', err);
+    //         }
+    //     };
         
-        fetchMaritalStatusOptions();
-        return () => { isMounted = false };
-    }, []);
+    //     fetchMaritalStatusOptions();
+    //     return () => { isMounted = false };
+    // }, []);
     
     useEffect(() => {
         let isMounted = true;  
@@ -225,7 +225,7 @@ const ProfileEditForm = () => {
             </Alert>
         ))}
 
-        <Form.Group>
+        {/* <Form.Group>
             <Form.Label>Marital Status</Form.Label>
                 <Form.Control
                     as="select"
@@ -244,7 +244,7 @@ const ProfileEditForm = () => {
             <Alert variant="warning" key={idx}>
                 {message}
             </Alert>
-        ))}
+        ))} */}
 
         <Form.Group>
             <Form.Label>How old are you?</Form.Label>
