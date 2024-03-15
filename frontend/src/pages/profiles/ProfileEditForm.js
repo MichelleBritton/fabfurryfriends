@@ -58,40 +58,42 @@ const ProfileEditForm = () => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
+        let isMounted = true;  
         const handleMount = async () => {
-        if (currentUser?.profile_id?.toString() === id) {
-            try {
-            const { data } = await axiosReq.get(`/profiles/${id}/`);
-            const { 
-                name, email, phone, address, marital_status,
-                age, children, children_age, daily_life,
-                other_pets, describe_house, describe_garden,
-                home_status, where_dog_live, dog_left_alone,
-                previously_owned, why, sex, preferred_age,
-                when, activities, image 
-            } = data;
-            setProfileData({ name, email, phone, address, marital_status,
-                age, children, children_age, daily_life,
-                other_pets, describe_house, describe_garden,
-                home_status, where_dog_live, dog_left_alone,
-                previously_owned, why, sex, preferred_age,
-                when, activities, image });
-            } catch (err) {
-            // console.log(err);
-            history.push("/");
+            if (currentUser?.profile_id?.toString() === id) {
+                try {
+                    const { data } = await axiosReq.get(`/profiles/${id}/`);
+                    const { 
+                        name, email, phone, address, marital_status,
+                        age, children, children_age, daily_life,
+                        other_pets, describe_house, describe_garden,
+                        home_status, where_dog_live, dog_left_alone,
+                        previously_owned, why, sex, preferred_age,
+                        when, activities, image 
+                    } = data;
+                    if (isMounted) setProfileData({ name, email, phone, address, marital_status,
+                        age, children, children_age, daily_life,
+                        other_pets, describe_house, describe_garden,
+                        home_status, where_dog_live, dog_left_alone,
+                        previously_owned, why, sex, preferred_age,
+                        when, activities, image });
+                } catch (err) {
+                    console.log(err);
+                    history.push("/");
+                }
+            } else {
+                history.push("/");
             }
-        } else {
-            history.push("/");
-        }
-    };
+        };
 
         handleMount();
+        return () => { isMounted = false };
     }, [currentUser, history, id]);
 
     const handleChange = (event) => {
         setProfileData({
-        ...profileData,
-        [event.target.name]: event.target.value,
+            ...profileData,
+            [event.target.name]: event.target.value,
         });
     };
 
@@ -121,21 +123,23 @@ const ProfileEditForm = () => {
         formData.append("activities", activities);
 
         if (imageFile?.current?.files[0]) {
-        formData.append("image", imageFile?.current?.files[0]);
+            formData.append("image", imageFile?.current?.files[0]);
         }
 
         try {
-        const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-        setCurrentUser((currentUser) => ({
-            ...currentUser,
-            profile_image: data.image,
-        }));
-        history.goBack();
+            const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
+            setCurrentUser((currentUser) => ({
+                ...currentUser,
+                profile_image: data.image,
+            }));
+            history.goBack();
         } catch (err) {
-        // console.log(err);
-        setErrors(err.response?.data);
+            // console.log(err);
+            setErrors(err.response?.data);
         }
     };
+
+    console.log(marital_status);
 
     const textFields = (
         <>
@@ -202,12 +206,19 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Marital Status</Form.Label>
-            <Form.Control
-                type="text"
-                value={phone}
+            <Form.Control       
+                as="select"       
+                value={marital_status}
                 onChange={handleChange}
                 name="marital_status"
-            />
+            >                
+                <option>Single</option>
+                <option>Married</option>
+                <option>Widowed</option>
+                <option>Divorced</option>
+                <option>Separated</option>
+                <option>Cohabiting</option>
+            </Form.Control>
         </Form.Group>
         {errors?.marital_status?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
