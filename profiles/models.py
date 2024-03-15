@@ -4,31 +4,35 @@ from django.contrib.auth.models import User
 
 # Marital Status options
 MARITAL = (
-    (1, 'Single'),
-    (2, 'Married'),
-    (3, 'Widowed'),
-    (4, 'Divorced'),
-    (5, 'Separated'),
-    (6, 'Cohabiting'),
+    (1, ''),
+    (2, 'Single'),
+    (3, 'Married'),
+    (4, 'Widowed'),
+    (5, 'Divorced'),
+    (6, 'Separated'),
+    (7, 'Cohabiting'),
 )
 
 # Yes/No options
 YN = (
-    (1, 'No'),
-    (2, 'Yes'),
+    (1, ''),
+    (2, 'No'),
+    (3, 'Yes'),
 )
 
 # Home Status options
 HOME = (
-    (1, 'Owned'),
-    (2, 'Rented'),
+    (1, ''),
+    (2, 'Owned'),
+    (3, 'Rented'),
 )
 
 # Preferred Sex options
 SEX = (
-    (1, 'Either'),
-    (2, 'Dog'),
-    (3, 'Bitch'),
+    (1, ''),
+    (2, 'Either'),
+    (3, 'Dog'),
+    (4, 'Bitch'),
 )
 
 
@@ -77,7 +81,6 @@ class Profile(models.Model):
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(owner=instance)
-
 
 
 post_save.connect(create_profile, sender=User)
