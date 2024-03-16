@@ -117,7 +117,7 @@ function ProfilePage( props ) {
                         Age of children?:
                     </Col>
                     <Col>
-                        {profile?.chldren_age}
+                        {profile?.children_age}
                     </Col>
                 </Row>
                 <Row>
