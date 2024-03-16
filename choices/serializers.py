@@ -5,6 +5,16 @@ class MaritalStatusSerializer(serializers.Serializer):
     label = serializers.CharField()
 
 
-class TestSerializer(serializers.Serializer):
+class ClosedSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    label = serializers.CharField()
+
+
+class HomeStatusSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    label = serializers.CharField()
+
+
+class PreferredSexSerializer(serializers.Serializer):
     value = serializers.CharField()
     label = serializers.CharField()
