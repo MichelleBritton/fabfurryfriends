@@ -57,171 +57,171 @@ function ProfilePage( props ) {
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Name:
                     </Col>
-                    <Col>
-                        {profile?.name}
+                    <Col lg={8}>
+                        <strong>{profile?.name}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Email:
                     </Col>
-                    <Col>
-                        {profile?.email}
+                    <Col lg={8}>
+                        <strong>{profile?.email}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Phone No:
                     </Col>
-                    <Col>
-                        {profile?.phone}
+                    <Col lg={8}>
+                        <strong>{profile?.phone}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Address:
                     </Col>
-                    <Col>
-                        {profile?.address}
+                    <Col lg={8}>
+                        <strong>{profile?.address}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Marital Status:
                     </Col>
-                    <Col>
-                        {profile?.marital_status}
+                    <Col lg={8}>
+                        <strong>{profile?.marital_status}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         How old are you?:
                     </Col>
-                    <Col>
-                        {profile?.age}
+                    <Col lg={8}>
+                        <strong>{profile?.age}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Do you have children?:
                     </Col>
-                    <Col>
-                        {profile?.children}
+                    <Col lg={8}>
+                        <strong>{profile?.children}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Age of children?:
                     </Col>
-                    <Col>
-                        {profile?.children_age}
+                    <Col lg={8}>
+                        <strong>{profile?.children_age}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Tell us about your daily life:
                     </Col>
-                    <Col>
-                        {profile?.daily_life}
+                    <Col lg={8}>
+                        <strong>{profile?.daily_life}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Do you have other pets?:
                     </Col>
-                    <Col>
-                        {profile?.other_pets}
+                    <Col lg={8}>
+                        <strong>{profile?.other_pets}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Describe your house:
                     </Col>
-                    <Col>
-                        {profile?.describe_house}
+                    <Col lg={8}>
+                        <strong>{profile?.describe_house}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Describe your garden:
                     </Col>
-                    <Col>
-                        {profile?.describe_garden}
+                    <Col lg={8}>
+                        <strong>{profile?.describe_garden}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Home Status:
                     </Col>
-                    <Col>
-                        {profile?.home_status}
+                    <Col lg={8}>
+                        <strong>{profile?.home_status}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}> 
                         Where will the dog live?:
                     </Col>
-                    <Col>
-                        {profile?.where_dog_live}
+                    <Col lg={8}>
+                        <strong>{profile?.where_dog_live}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Will the dog be left alone?:
                     </Col>
-                    <Col>
-                        {profile?.dog_left_alone}
+                    <Col lg={8}>
+                        <strong>{profile?.dog_left_alone}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Have you ever owned a dog?:
                     </Col>
-                    <Col>
-                        {profile?.previously_owned}
+                    <Col lg={8}>
+                        <strong>{profile?.previously_owned}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Why do you want a dog?:
                     </Col>
-                    <Col>
-                        {profile?.why}
+                    <Col lg={8}>
+                        <strong>{profile?.why}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Preferred sex:
                     </Col>
-                    <Col>
-                        {profile?.sex}
+                    <Col lg={8}>
+                        <strong>{profile?.sex}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         Preferred age:
                     </Col>
-                    <Col>
-                        {profile?.preferred_age}
+                    <Col lg={8}>
+                        <strong>{profile?.preferred_age}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         When do you want a dog?:
                     </Col>
-                    <Col>
-                        {profile?.when}
+                    <Col lg={8}>
+                        <strong>{profile?.when}</strong>
                     </Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col lg={4}>
                         What types of activities do you plan to do with the dog?:
                     </Col>
-                    <Col>
-                        {profile?.activities}
+                    <Col lg={8}>
+                        <strong>{profile?.activities}</strong>
                     </Col>
                 </Row>
             </Col>
