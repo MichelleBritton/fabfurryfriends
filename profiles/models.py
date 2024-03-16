@@ -2,35 +2,6 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-# Marital Status options
-MARITAL = (
-    (1, 'Single'),
-    (2, 'Married'),
-    (3, 'Widowed'),
-    (4, 'Divorced'),
-    (5, 'Separated'),
-    (6, 'Cohabiting'),
-)
-
-# Yes/No options
-YN = (
-    (1, 'No'),
-    (2, 'Yes'),
-)
-
-# Home Status options
-HOME = (
-    (1, 'Owned'),
-    (2, 'Rented'),
-)
-
-# Preferred Sex options
-SEX = (
-    (1, 'Either'),
-    (2, 'Dog'),
-    (3, 'Bitch'),
-)
-
 
 class Profile(models.Model):
     """ 
@@ -43,20 +14,20 @@ class Profile(models.Model):
     email = models.EmailField(max_length=255, blank=True)
     phone = models.CharField(max_length=11, blank=True)
     address = models.TextField(blank=True)
-    marital_status = models.IntegerField(choices=MARITAL, default=1)
+    marital_status = models.CharField(max_length=255)
     age = models.IntegerField(null=True)
-    children = models.IntegerField(choices=YN, default=1)
+    children = models.CharField(max_length=255)
     children_age = models.CharField(max_length=25, blank=True)
     daily_life = models.TextField(blank=True)
     other_pets = models.TextField(blank=True)
     describe_house = models.TextField(blank=True)
     describe_garden = models.TextField(blank=True)
-    home_status = models.IntegerField(choices=HOME, default=1)
+    home_status = models.CharField(max_length=255)
     where_dog_live = models.TextField(blank=True)
     dog_left_alone = models.TextField(blank=True)
-    previously_owned = models.IntegerField(choices=YN, default=1)
+    previously_owned = models.CharField(max_length=255)
     why = models.TextField(blank=True)
-    sex = models.IntegerField(choices=SEX, default=1)
+    sex = models.CharField(max_length=255)
     preferred_age = models.CharField(max_length=255, blank=True)
     when = models.TextField(blank=True)
     activities = models.TextField(blank=True)

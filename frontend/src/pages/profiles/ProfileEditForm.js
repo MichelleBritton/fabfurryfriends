@@ -21,7 +21,11 @@ const ProfileEditForm = () => {
     const { id } = useParams();
     const history = useHistory();
     const imageFile = useRef();
-    //const [maritalStatusOptions, setMaritalStatusOptions] = useState([]);
+    const [maritalStatusOptions, setMaritalStatusOptions] = useState([]);
+    const [childrenOptions, setChildrenOptions] = useState([]);
+    const [homeStatusOptions, setHomeStatusOptions] = useState([]);
+    const [prevOwnedOptions, setPrevOwnedOptions] = useState([]);
+    const [prefSexOptions, setPrefSexOptions] = useState([]);
     const [profileData, setProfileData] = useState({
         name: "",
         email: "",
@@ -56,20 +60,66 @@ const ProfileEditForm = () => {
     } = profileData;
     const [errors, setErrors] = useState({});
 
-    // useEffect(() => {
-    //     let isMounted = true; 
-    //     const fetchMaritalStatusOptions = async () => {
-    //         try {
-    //             const response = await axiosReq.get('/maritalstatus/'); 
-    //             if (isMounted) setMaritalStatusOptions(response.data);
-    //         } catch (err) {
-    //             console.log('Error fetching marital status options:', err);
-    //         }
-    //     };
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchMaritalStatusOptions = async () => {
+            try {
+                const response = await axiosReq.get('/choices/marital_status_choices'); 
+                if (isMounted) setMaritalStatusOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
         
-    //     fetchMaritalStatusOptions();
-    //     return () => { isMounted = false };
-    // }, []);
+        fetchMaritalStatusOptions();
+        return () => { isMounted = false };
+    }, []);
+
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchClosedOptions = async () => {
+            try {
+                const response = await axiosReq.get('/choices/closed_choices'); 
+                if (isMounted) setChildrenOptions(response.data);
+                if (isMounted) setPrevOwnedOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchClosedOptions();
+        return () => { isMounted = false };
+    }, []);
+
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchHomeStatusOptions = async () => {
+            try {
+                const response = await axiosReq.get('/choices/home_status_choices'); 
+                if (isMounted) setHomeStatusOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchHomeStatusOptions();
+        return () => { isMounted = false };
+    }, []);
+
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchPrefSexOptions = async () => {
+            try {
+                const response = await axiosReq.get('/choices/preferred_sex_choices'); 
+                if (isMounted) setPrefSexOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchPrefSexOptions();
+        return () => { isMounted = false };
+    }, []);
     
     useEffect(() => {
         let isMounted = true;  
@@ -111,13 +161,6 @@ const ProfileEditForm = () => {
         });
     };
 
-    // const handleMaritalStatusChange = (event) => {
-    //     setProfileData({
-    //         ...profileData,
-    //         marital_status: event.target.value,
-    //     });
-    // };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -152,16 +195,14 @@ const ProfileEditForm = () => {
             setCurrentUser((currentUser) => ({
                 ...currentUser,
                 profile_image: data.image,
-            }));
-            console.log(profileData);
+            }));            
             history.goBack();
         } catch (err) {
             // console.log(err);
             setErrors(err.response?.data);
         }
     };
-    console.log(marital_status);
-    
+       
     const textFields = (
         <>
         <Form.Group>
@@ -225,7 +266,7 @@ const ProfileEditForm = () => {
             </Alert>
         ))}
 
-        {/* <Form.Group>
+        <Form.Group>
             <Form.Label>Marital Status</Form.Label>
                 <Form.Control
                     as="select"
@@ -234,7 +275,7 @@ const ProfileEditForm = () => {
                     name="marital_status"
                 >
                     {maritalStatusOptions.map(option => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value}>
                             {option.label}
                         </option>
                     ))}
@@ -244,7 +285,7 @@ const ProfileEditForm = () => {
             <Alert variant="warning" key={idx}>
                 {message}
             </Alert>
-        ))} */}
+        ))}
 
         <Form.Group>
             <Form.Label>How old are you?</Form.Label>
@@ -263,12 +304,18 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Do you have chldren?</Form.Label>
-            <Form.Control
-                type="text"
-                value={children}
-                onChange={handleChange}
-                name="children"
-            />
+                <Form.Control
+                    as="select"
+                    value={children}
+                    onChange={handleChange}
+                    name="children"
+                >
+                    {childrenOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+            </Form.Control>
         </Form.Group>
         {errors?.children?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
@@ -357,18 +404,24 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Home Status</Form.Label>
-            <Form.Control
-                type="text"
-                value={home_status}
-                onChange={handleChange}
-                name="home_status"
-            />
+                <Form.Control
+                    as="select"
+                    value={home_status}
+                    onChange={handleChange}
+                    name="home_status"
+                >
+                    {homeStatusOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+            </Form.Control>
         </Form.Group>
         {errors?.home_status?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
                 {message}
             </Alert>
-        ))}   
+        ))} 
 
         <Form.Group>
             <Form.Label>Where will the dog live?</Form.Label>
@@ -404,18 +457,24 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Have you ever owned a dog?</Form.Label>
-            <Form.Control
-                type="text"
-                value={previously_owned}
-                onChange={handleChange}
-                name="previously_owned"
-            />
+                <Form.Control
+                    as="select"
+                    value={previously_owned}
+                    onChange={handleChange}
+                    name="previously_owned"
+                >
+                    {prevOwnedOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+            </Form.Control>
         </Form.Group>
         {errors?.previously_owned?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
                 {message}
             </Alert>
-        ))}   
+        ))} 
 
         <Form.Group>
             <Form.Label>Why do you want a dog?</Form.Label>
@@ -435,18 +494,24 @@ const ProfileEditForm = () => {
 
         <Form.Group>
             <Form.Label>Preferred sex</Form.Label>
-            <Form.Control
-                type="text"
-                value={sex}
-                onChange={handleChange}
-                name="sex"
-            />
+                <Form.Control
+                    as="select"
+                    value={sex}
+                    onChange={handleChange}
+                    name="sex"
+                >
+                    {prefSexOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+            </Form.Control>
         </Form.Group>
         {errors?.sex?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
                 {message}
             </Alert>
-        ))}   
+        ))}
 
         <Form.Group>
             <Form.Label>Preferred age</Form.Label>

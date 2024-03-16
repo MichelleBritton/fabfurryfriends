@@ -9,11 +9,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    marital_status = serializers.SerializerMethodField()
-    children = serializers.SerializerMethodField()
-    home_status = serializers.SerializerMethodField()
-    previously_owned = serializers.SerializerMethodField()
-    sex = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -29,18 +24,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'where_dog_live', 'dog_left_alone', 'previously_owned', 'why', 
             'sex', 'preferred_age', 'when', 'activities', 'image', 'is_owner', 
         ]
-
-    def get_marital_status(self, obj):
-        return obj.get_marital_status_display()
-    
-    def get_children(self, obj):
-        return obj.get_children_display()
-    
-    def get_home_status(self, obj):
-        return obj.get_home_status_display()
-    
-    def get_previously_owned(self, obj):
-        return obj.get_previously_owned_display()
-
-    def get_sex(self, obj):
-        return obj.get_sex_display()
