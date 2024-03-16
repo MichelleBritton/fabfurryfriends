@@ -56,7 +56,7 @@ function ProfilePage( props ) {
                         <h3 className={appStyles.Red}>{profile?.owner}'s Profile</h3>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Name:
                     </Col>
@@ -64,7 +64,7 @@ function ProfilePage( props ) {
                         {profile?.name}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Email:
                     </Col>
@@ -72,7 +72,7 @@ function ProfilePage( props ) {
                         {profile?.email}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Phone No:
                     </Col>
@@ -80,7 +80,7 @@ function ProfilePage( props ) {
                         {profile?.phone}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Address:
                     </Col>
@@ -88,7 +88,7 @@ function ProfilePage( props ) {
                         {profile?.address}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Marital Status:
                     </Col>
@@ -96,7 +96,7 @@ function ProfilePage( props ) {
                         {profile?.marital_status}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         How old are you?:
                     </Col>
@@ -104,7 +104,7 @@ function ProfilePage( props ) {
                         {profile?.age}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Do you have children?:
                     </Col>
@@ -112,7 +112,7 @@ function ProfilePage( props ) {
                         {profile?.children}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Age of children?:
                     </Col>
@@ -120,7 +120,7 @@ function ProfilePage( props ) {
                         {profile?.children_age}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Tell us about your daily life:
                     </Col>
@@ -128,7 +128,7 @@ function ProfilePage( props ) {
                         {profile?.daily_life}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Do you have other pets?:
                     </Col>
@@ -136,7 +136,7 @@ function ProfilePage( props ) {
                         {profile?.other_pets}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Describe your house:
                     </Col>
@@ -144,7 +144,7 @@ function ProfilePage( props ) {
                         {profile?.describe_house}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Describe your garden:
                     </Col>
@@ -152,7 +152,7 @@ function ProfilePage( props ) {
                         {profile?.describe_garden}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Home Status:
                     </Col>
@@ -160,7 +160,7 @@ function ProfilePage( props ) {
                         {profile?.home_status}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Where will the dog live?:
                     </Col>
@@ -168,7 +168,7 @@ function ProfilePage( props ) {
                         {profile?.where_dog_live}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Will the dog be left alone?:
                     </Col>
@@ -176,7 +176,7 @@ function ProfilePage( props ) {
                         {profile?.dog_left_alone}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Have you ever owned a dog?:
                     </Col>
@@ -184,7 +184,7 @@ function ProfilePage( props ) {
                         {profile?.previously_owned}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Why do you want a dog?:
                     </Col>
@@ -192,7 +192,7 @@ function ProfilePage( props ) {
                         {profile?.why}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Preferred sex:
                     </Col>
@@ -200,7 +200,7 @@ function ProfilePage( props ) {
                         {profile?.sex}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         Preferred age:
                     </Col>
@@ -208,7 +208,7 @@ function ProfilePage( props ) {
                         {profile?.preferred_age}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         When do you want a dog?:
                     </Col>
@@ -216,7 +216,7 @@ function ProfilePage( props ) {
                         {profile?.when}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                     <Col>
                         What types of activities do you plan to do with the dog?:
                     </Col>
