@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/', include('profiles.urls')),
     path('api/', include('adverts.urls')),
     path('api/', include('choices.urls')),
+    path('api/', include('adoptors.urls')),
 ]
 
 handler404 = TemplateView.as_view(template_name='index.html')

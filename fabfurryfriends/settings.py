@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'profiles',
     'adverts',
     'choices',
+    'adoptors',
 
 
 ]
