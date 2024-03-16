@@ -2,6 +2,7 @@ import React from 'react';
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Advert.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -9,6 +10,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 import { Card } from "react-bootstrap";
 import { Media } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 
@@ -59,6 +61,12 @@ const Advert = (props) => {
                     {dog_name && <Card.Title className={`${appStyles.Teal} text-left`}>{dog_name}</Card.Title>}               
                     <Card.Body className={styles.CardBody}>
                         {content && <Card.Text>{content}</Card.Text>}
+                        <Button
+                            className={`${btnStyles.Button} ${btnStyles.Bright}`}
+                            onClick={() => {}}
+                        >                        
+                            {dog_name && `I would like to adopt ${dog_name}`}
+                    </Button>     
                     </Card.Body>
                 </>            
             ) : (
