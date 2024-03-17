@@ -71,15 +71,17 @@ const Advert = (props) => {
                             )}
                         </Media>
                     </Card.Body>                
-                    {dog_name && <Card.Title className={`${appStyles.Teal} text-left`}>{dog_name}</Card.Title>}               
+                    {dog_name && <Card.Title className={`${appStyles.Teal} ${styles.CardTitle} text-left`}>{dog_name}</Card.Title>}               
                     <Card.Body className={styles.CardBody}>
                         {content && <Card.Text>{content}</Card.Text>}
-                        <Button
-                            className={`${btnStyles.Button} ${btnStyles.Bright}`}
-                            onClick={() => handleAdopt(advert_id, currentUser)}
-                        >                        
-                            {dog_name && `I would like to adopt ${dog_name}`}
-                    </Button>     
+                        {currentUser && (
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Bright}`}
+                                onClick={() => handleAdopt(advert_id, currentUser)}
+                            >                        
+                                {dog_name && `I would like to adopt ${dog_name}`}
+                            </Button>   
+                        )}
                     </Card.Body>
                 </>            
             ) : (
