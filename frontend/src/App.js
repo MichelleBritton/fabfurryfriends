@@ -15,6 +15,8 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   
@@ -22,6 +24,7 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container fluid className={styles.Main}>  
+      <ToastContainer position="top-center" autoClose={3000} />
         <Switch>
           <Route 
             exact 
