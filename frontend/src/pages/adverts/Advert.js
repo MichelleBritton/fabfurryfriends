@@ -1,18 +1,15 @@
 import React from 'react';
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Advert.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
-
 import { Card } from "react-bootstrap";
 import { Media } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-
 import { Link, useHistory, useLocation } from "react-router-dom";
+// import { toast } from "react-toastify";
 
 const Advert = (props) => {
     const {
@@ -30,27 +27,34 @@ const Advert = (props) => {
     const location = useLocation();
     const advert_id = id;
 
+    // Direct to edit advert page
     const handleEdit = () => {
         history.push(`/adverts/${id}/edit`);
     };
 
+    // Handle advert deletion
     const handleDelete = async () => {
         try {
           await axiosRes.delete(`/adverts/${id}/`);
           history.goBack();
+        //   toast.success("Advert deleted!");
         } catch (err) {
-        //   console.log(err);
+            // toast.error("Deletion unsuccessful. Please try again.");
+            // console.log(err);
         }
     };
 
+    // Handle adoption request
     const handleAdopt = async ( advert_id, currentUser ) => {
         try {
             const adopt = {
                 advert: advert_id,
                 owner: currentUser.username
             };
-            await axiosRes.post('/adoptors/', adopt);            
+            await axiosRes.post('/adoptors/', adopt);         
+            // toast.success("Congratulations, your request to adopt has been received!");   
         } catch (err) {
+            // toast.error("Error submitting request. You may have already submitted a request");
             console.log(err);
         }
     };
