@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -11,9 +9,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser, useSetCurrentUser, } from "../../contexts/CurrentUserContext";
+// import { toast } from "react-toastify";
 
 const ProfileEditForm = () => {
     const currentUser = useCurrentUser();
@@ -60,6 +58,7 @@ const ProfileEditForm = () => {
     } = profileData;
     const [errors, setErrors] = useState({});
 
+    // GET request for marital status choices endpoint to populate select field
     useEffect(() => {
         let isMounted = true; 
         const fetchMaritalStatusOptions = async () => {
@@ -75,6 +74,7 @@ const ProfileEditForm = () => {
         return () => { isMounted = false };
     }, []);
 
+    // GET request for closed choices endpoint to populate select field
     useEffect(() => {
         let isMounted = true; 
         const fetchClosedOptions = async () => {
@@ -91,6 +91,7 @@ const ProfileEditForm = () => {
         return () => { isMounted = false };
     }, []);
 
+    // GET request for home status choices endpoint to populate select field
     useEffect(() => {
         let isMounted = true; 
         const fetchHomeStatusOptions = async () => {
@@ -106,6 +107,7 @@ const ProfileEditForm = () => {
         return () => { isMounted = false };
     }, []);
 
+    // GET request for preferred sex choices endpoint to populate select field
     useEffect(() => {
         let isMounted = true; 
         const fetchPrefSexOptions = async () => {
@@ -121,6 +123,7 @@ const ProfileEditForm = () => {
         return () => { isMounted = false };
     }, []);
     
+    // GET request to retrieve profile by id
     useEffect(() => {
         let isMounted = true;  
         const handleMount = async () => {
@@ -154,6 +157,7 @@ const ProfileEditForm = () => {
         return () => { isMounted = false };
     }, [currentUser, history, id]);
 
+    // Handle form changes
     const handleChange = (event) => {
         setProfileData({
             ...profileData,
@@ -161,6 +165,7 @@ const ProfileEditForm = () => {
         });
     };
 
+    // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -197,12 +202,15 @@ const ProfileEditForm = () => {
                 profile_image: data.image,
             }));            
             history.goBack();
+            // toast.success("Profile edited successfully!");
         } catch (err) {
+            // toast.error("Error submitting changes. Please try again.");
             // console.log(err);
             setErrors(err.response?.data);
         }
     };
        
+    // Form input fields
     const textFields = (
         <>
         <Form.Group>
