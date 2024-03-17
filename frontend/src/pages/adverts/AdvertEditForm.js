@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -10,17 +8,15 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-
 import { useHistory, useParams } from "react-router-dom";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
+// import { toast } from "react-toastify";
 
 function AdvertEditForm() {
     const currentUser = useCurrentUser();
     const isAdmin = currentUser?.is_admin_user;
     const [errors, setErrors] = useState({});
-
     const [advertData, setAdvertData] = useState({
         dog_name: "",
         breed: "",
@@ -38,11 +34,11 @@ function AdvertEditForm() {
         dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
         quick_fact_3, quick_fact_4, quick_fact_5, content, image
     } = advertData;
-
     const imageInput = useRef(null);
     const history = useHistory();
     const {id} = useParams();
 
+    // GET request to retrieve adverts by id
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -52,6 +48,7 @@ function AdvertEditForm() {
                     quick_fact_3, quick_fact_4, quick_fact_5, content, image
                 } = data;
 
+                // Check if user is an admin user and set advert data otherwise redirect to home page
                 isAdmin ? setAdvertData({dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
                     quick_fact_3, quick_fact_4, quick_fact_5, content, image}) : history.push('/');
             } catch(err) {
@@ -62,6 +59,7 @@ function AdvertEditForm() {
         handleMount();
     }, [history, id, isAdmin]);
 
+    // Handle form change
     const handleChange = (event) => {
         setAdvertData({
         ...advertData,
@@ -69,6 +67,7 @@ function AdvertEditForm() {
         });
     };
 
+    // Handle image change
     const handleChangeImage = (event) => {
         if (event.target.files.length){
             URL.revokeObjectURL(image);            
@@ -79,6 +78,7 @@ function AdvertEditForm() {
         }
     };
 
+    // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -99,17 +99,20 @@ function AdvertEditForm() {
         }
                 
         try {
+            // PUT request to update advert
             await axiosReq.put(`/adverts/${id}/`, formData);
             history.push(`/adverts/${id}`);
+            // toast.success("Edit advert successful!");
         } catch(err){
-            // console.log(err);            
+            // console.log(err);       
+            // toast.error("Error editing advert. Please try again.");     
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }
         }
     };
 
-
+    // Form input fields
     const textFields = (
         <div className="text-center">
             <Form.Group controlId="dog_name">

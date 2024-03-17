@@ -1,17 +1,13 @@
 
 import React, { useEffect, useState } from "react";
-
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/AdvertsPage.module.css";
 import NoResults from "../../assets/no-results.png";
-
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "./Advert";
 import Asset from "../../components/Asset";
@@ -22,6 +18,7 @@ function AdvertsPage ({ message }) {
     const [hasLoaded, setHasLoaded] = useState(false);
     const [query, setQuery] = useState("");
 
+    // GET request to fetch adverts based on search query
     useEffect(() => {
         const fetchAdverts = async () => {
             try {

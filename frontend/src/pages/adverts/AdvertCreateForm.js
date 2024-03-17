@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
-
 import { useHistory } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -9,20 +7,17 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { Image } from "react-bootstrap";
-
 import defaultImage from "../../assets/default_advert.png"
 import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
-
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+// import { toast } from "react-toastify";
 
 function AdvertCreateForm() {
     useRedirect("loggedOut");
-
     const [errors, setErrors] = useState({});
-
     const [advertData, setAdvertData] = useState({
         dog_name: "",
         breed: "",
@@ -40,11 +35,10 @@ function AdvertCreateForm() {
         dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
         quick_fact_3, quick_fact_4, quick_fact_5, content, image 
     } = advertData;
-
     const imageInput = useRef(null);
-
     const history = useHistory()
 
+    // Handle form changes
     const handleChange = (event) => {
         setAdvertData({
           ...advertData,
@@ -52,6 +46,7 @@ function AdvertCreateForm() {
         });
     };
     
+    // Handle image upload
     const handleChangeImage = (event) => {
         if (event.target.files.length){            
             URL.revokeObjectURL(image);
@@ -62,6 +57,7 @@ function AdvertCreateForm() {
         }
     };
 
+    // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -84,16 +80,20 @@ function AdvertCreateForm() {
         }
             
         try {
+            // POST request to create new advert
             const {data} = await axiosReq.post('/adverts/', formData);
             history.push(`/adverts/${data.id}`);
+            // toast.success("Form submission successful! Your advert has been created");
         } catch(err){
             // console.log(err)
+            // toast.error("Error submitting form. Please try again.");
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }
         }
     };
 
+    // Form input fields
     const textFields = (
         <div className="text-center">
             <Form.Group controlId="dog_name">
