@@ -23,11 +23,12 @@ const Advert = (props) => {
         image,        
         advertPage,
     } = props;
-
+    
     const currentUser = useCurrentUser();
     const isAdmin = currentUser && currentUser.is_admin_user;
     const history = useHistory();
     const location = useLocation();
+    const advert_id = id;
 
     const handleEdit = () => {
         history.push(`/adverts/${id}/edit`);
@@ -42,6 +43,18 @@ const Advert = (props) => {
         }
     };
 
+    const handleAdopt = async ( advert_id, currentUser ) => {
+        try {
+            const adopt = {
+                advert: advert_id,
+                owner: currentUser.username
+            };
+            await axiosRes.post('/adoptors/', adopt);            
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
     return (
         <Card className={appStyles.Content}>
             <Card.Img src={image} alt={dog_name} className={appStyles.ImageRounded} />
@@ -63,7 +76,7 @@ const Advert = (props) => {
                         {content && <Card.Text>{content}</Card.Text>}
                         <Button
                             className={`${btnStyles.Button} ${btnStyles.Bright}`}
-                            onClick={() => {}}
+                            onClick={() => handleAdopt(advert_id, currentUser)}
                         >                        
                             {dog_name && `I would like to adopt ${dog_name}`}
                     </Button>     
