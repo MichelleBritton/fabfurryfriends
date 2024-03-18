@@ -9,11 +9,12 @@ class AdoptorSerializer(serializers.ModelSerializer):
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     advert_name = serializers.ReadOnlyField(source='advert.dog_name')
+    advert_id = serializers.ReadOnlyField(source='advert.id')
 
     class Meta:
         model = Adoptor
         fields = [
-            'id', 'owner', 'created_at', 'advert', 'advert_name', 
+            'id', 'owner', 'created_at', 'advert', 'advert_name', 'advert_id',
         ]
 
     def create(self, validated_data):

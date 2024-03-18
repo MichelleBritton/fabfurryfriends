@@ -12,7 +12,8 @@ import { Col } from "react-bootstrap";
 function AdvertPage() {
     const { id } = useParams();
     const [advert, setAdvert] = useState({results: []});
-
+    const [adoptors, setAdoptors] = useState({results: []});
+    
     // GET request to retrieve advert by id
     useEffect(() => {
         const handleMount = async () => {
@@ -29,6 +30,27 @@ function AdvertPage() {
         handleMount();
     }, [id]);
 
+    // GET request to retrieve adoptors
+    useEffect(() => {
+        const fetchAdoptors = async () => {
+            try {
+                const [{data: adoptors}] = await Promise.all([
+                    axiosReq.get('/adoptors/'),
+                ]);                
+                setAdoptors({ results: adoptors.results });  
+            } catch (err) {
+                // Handle error
+            }
+        };
+    
+        fetchAdoptors();        
+    }, []);
+
+    // Filter adoptors based on advert ID
+    const adoptorsWithMatchingAdvertId = adoptors.results.filter(
+        adoptor => adoptor.advert_id === parseInt(id)
+    );
+
     return (
         <Container className={appStyles.MainContent} fluid>
             <Row>
@@ -40,6 +62,7 @@ function AdvertPage() {
                     <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
                 </Col>
             </Row>
+            
         </Container>                
     );
 }
