@@ -8,12 +8,13 @@ import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+//import Profile from "../profiles/Profile";
 
 function AdvertPage() {
     const { id } = useParams();
     const [advert, setAdvert] = useState({results: []});
     const [adoptors, setAdoptors] = useState({results: []});
-    
+        
     // GET request to retrieve advert by id
     useEffect(() => {
         const handleMount = async () => {
@@ -35,21 +36,19 @@ function AdvertPage() {
         const fetchAdoptors = async () => {
             try {
                 const [{data: adoptors}] = await Promise.all([
-                    axiosReq.get('/adoptors/'),
-                ]);                
-                setAdoptors({ results: adoptors.results });  
+                    axiosReq.get(`/adoptors/?advert_id=${id}`),
+                ]);            
+                setAdoptors({ results: adoptors.results });    
             } catch (err) {
                 // Handle error
             }
         };
     
-        fetchAdoptors();        
-    }, []);
+        fetchAdoptors();         
+    }, [id]);
+    console.log(adoptors.results); 
 
-    // Filter adoptors based on advert ID
-    const adoptorsWithMatchingAdvertId = adoptors.results.filter(
-        adoptor => adoptor.advert_id === parseInt(id)
-    );
+    
 
     return (
         <Container className={appStyles.MainContent} fluid>
@@ -62,7 +61,10 @@ function AdvertPage() {
                     <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
                 </Col>
             </Row>
-            
+            {/* <h2>Adoptors for this Advert:</h2>
+            {adoptorsWithMatchingAdvertId.map((adoptor, index) => (
+                <Profile key={index} adoptor={adoptor} />
+            ))} */}
         </Container>                
     );
 }
