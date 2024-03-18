@@ -1,91 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import appStyles from "../../App.module.css";
-// import { axiosReq } from "../../api/axiosDefaults";
-// import Advert from "./Advert";
-// import BackButton from "../../components/BackButton";
-// import QuickFacts from "../../components/QuickFacts";
-// import { useParams } from "react-router-dom";
-// import { Container } from "react-bootstrap";
-// import { Row } from "react-bootstrap";
-// import { Col } from "react-bootstrap";
-// import Profile from "../profiles/Profile";
-// import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataContext";
-// import Asset from "../../components/Asset";
-
-// function AdvertPage() {
-//     const { id } = useParams();
-//     const [advert, setAdvert] = useState({results: []});
-
-//     const setProfileData = useSetProfileData();
-//     const { pageProfile } = useProfileData();
-        
-//     // GET request to retrieve advert by id
-//     useEffect(() => {
-//         const handleMount = async () => {
-//             try {
-//                 const [{data: advert}] = await Promise.all([
-//                     axiosReq.get(`/adverts/${id}`),
-//                 ]);
-//                 setAdvert({results: [advert]});
-//             } catch(err) {
-//                 // console.log(err);
-//             }
-//         };
-
-//         handleMount();
-//     }, [id]);
-
-//     // GET request to retrieve adoptors by advert_id
-//     // Map over the owner id in the adoptors results 
-//     // and fetch profiles based on the adoptor's owner id
-//     useEffect(() => {
-//         const fetchAdoptors = async () => {
-//             try {
-//                 const [{data: adoptors}] = await Promise.all([
-//                     axiosReq.get(`/adoptors/?advert_id=${id}`),
-//                 ]);           
-
-//                 const ownerId = adoptors.results.map(adoptor => adoptor.owner_id);
-                
-//                 const [{data: profilesData}] = await axiosReq.get(`/profiles/?id=${ownerId.join(',')}`);
-//                 setProfileData(prevState => ({
-//                     ...prevState,
-//                     pageProfile: profilesData,
-//                 }));
-//             } catch (err) {
-//                 //console.log(err);
-//             }
-//         };
-    
-//         fetchAdoptors();         
-//     }, [setProfileData, pageProfile, id]);
-    
-//     return (
-//         <Container className={appStyles.MainContent} fluid>
-//             <Row>
-//                 <Col className="mr-auto" md={3}>
-//                     <BackButton />
-//                     <QuickFacts {...advert.results[0]} setAdvert={setAdvert} advertPage />
-//                 </Col>
-//                 <Col className="ml-auto" md={8}>
-//                     <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
-//                 </Col>
-//             </Row>
-//             <h2>Adoptors for this Advert:</h2>
-//             {pageProfile.results.length ? (
-//                 pageProfile.results.map((profile) => (
-//                     <Profile key={profile.id} profile={profile} />
-//                 ))
-//             ) : (
-//                 <Asset spinner />
-//             )}
-//         </Container>                
-//     );
-// }
-
-// export default AdvertPage;
-
-
 import React, { useEffect, useState } from "react";
 import appStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -121,7 +33,10 @@ function AdvertPage() {
                     axiosReq.get(`/adoptors/?advert_id=${id}`),
                 ]);
 
+                const usernames = adoptorsData.results.map(adoptor => adoptor.owner);
+                console.log(usernames)
                
+                
                 // Update profile data state with adoptors associated with the current advert
                 setProfileData(prevState => ({
                     ...prevState,
@@ -132,7 +47,7 @@ function AdvertPage() {
                 
                 setIsLoading(false);                 
             } catch (err) {
-                console.log(err)
+                //console.log(err)
             }
         };
 
