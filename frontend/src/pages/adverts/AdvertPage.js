@@ -34,7 +34,7 @@ function AdvertPage() {
                 ]);
 
                 const usernames = adoptorsData.results.map(adoptor => adoptor.owner);
-                console.log(usernames)
+                console.log("usernames: ", usernames)
                
                 
                 // Update profile data state with adoptors associated with the current advert
@@ -43,7 +43,7 @@ function AdvertPage() {
                     pageProfile: adoptorsData.results,
                 }));
                 
-                console.log(adoptorsData.results);
+                console.log("adoptors data: ", adoptorsData.results);
                 
                 setIsLoading(false);                 
             } catch (err) {
