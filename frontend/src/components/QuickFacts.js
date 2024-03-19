@@ -1,9 +1,6 @@
 import React from 'react';
-
 import appStyles from "../App.module.css";
 import styles from "../styles/QuickFacts.module.css";
-
-
 import { Card } from "react-bootstrap";
 
 const QuickFacts = (props) => {

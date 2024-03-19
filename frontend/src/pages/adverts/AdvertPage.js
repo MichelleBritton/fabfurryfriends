@@ -10,6 +10,7 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import Profile from "../profiles/Profile";
 import { useProfileData, useSetProfileData, } from "../../contexts/ProfileDataContext";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 
 function AdvertPage() {
@@ -18,6 +19,8 @@ function AdvertPage() {
     const [isLoading, setIsLoading] = useState(true); 
     const setProfileData = useSetProfileData();
     const { pageProfile } = useProfileData();
+    const currentUser = useCurrentUser();
+    const isAdmin = currentUser && currentUser.is_admin_user;
         
     useEffect(() => {
         const fetchData = async () => {
@@ -65,24 +68,28 @@ function AdvertPage() {
                 <Col className="mr-auto" md={3}>
                     <BackButton />
                     <QuickFacts {...advert.results[0]} setAdvert={setAdvert} advertPage />
+
+                    {isAdmin && (
+                        <div className={`${appStyles.Content} mt-5`}>
+                            <h2 className={appStyles.Red}>Adopton requests</h2>            
+                            {isLoading ? (
+                                <Asset spinner />
+                            ) : (
+                                pageProfile && pageProfile.length ? (
+                                    pageProfile.map((profile) => (
+                                        <Profile key={profile.id} profile={profile} />
+                                    ))
+                                ) : (
+                                    <div>No adoptors found for this advert.</div>
+                                )
+                            )}
+                        </div>            
+                    )}
                 </Col>
                 <Col className="ml-auto" md={8}>
                     <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
                 </Col>
             </Row>
-            <h2>Adoptors for this Advert:</h2>
-            
-            {isLoading ? (
-                <Asset spinner />
-            ) : (
-                pageProfile && pageProfile.length ? (
-                    pageProfile.map((profile) => (
-                        <Profile key={profile.id} profile={profile} />
-                    ))
-                ) : (
-                    <div>No adoptors found for this advert.</div>
-                )
-            )}
         </Container>                
     );
 }
