@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser, useSetCurrentUser, } from "../../contexts/CurrentUserContext";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ProfileEditForm = () => {
     const currentUser = useCurrentUser();
@@ -202,9 +202,9 @@ const ProfileEditForm = () => {
                 profile_image: data.image,
             }));            
             history.goBack();
-            // toast.success("Profile edited successfully!");
+            toast.success("Profile edited successfully!");
         } catch (err) {
-            // toast.error("Error submitting changes. Please try again.");
+            toast.error("Error submitting changes. Please try again.");
             // console.log(err);
             setErrors(err.response?.data);
         }

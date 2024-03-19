@@ -13,7 +13,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 function AdvertCreateForm() {
     useRedirect("loggedOut");
@@ -83,10 +83,10 @@ function AdvertCreateForm() {
             // POST request to create new advert
             const {data} = await axiosReq.post('/adverts/', formData);
             history.push(`/adverts/${data.id}`);
-            // toast.success("Form submission successful! Your advert has been created");
+            toast.success("Form submission successful. Your advert has been created");
         } catch(err){
             // console.log(err)
-            // toast.error("Error submitting form. Please try again.");
+            toast.error("Error submitting form. Please try again");
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }

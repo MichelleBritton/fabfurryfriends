@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import appStyles from "../../App.module.css";

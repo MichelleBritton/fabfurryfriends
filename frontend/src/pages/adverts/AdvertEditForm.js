@@ -11,7 +11,7 @@ import Image from "react-bootstrap/Image";
 import { useHistory, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 function AdvertEditForm() {
     const currentUser = useCurrentUser();
@@ -102,10 +102,10 @@ function AdvertEditForm() {
             // PUT request to update advert
             await axiosReq.put(`/adverts/${id}/`, formData);
             history.push(`/adverts/${id}`);
-            // toast.success("Edit advert successful!");
+            toast.success("Edit advert successful");
         } catch(err){
             // console.log(err);       
-            // toast.error("Error editing advert. Please try again.");     
+            toast.error("Error editing advert. Please try again");     
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }

@@ -13,7 +13,7 @@ import {
 } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const UsernameForm = () => {
     const [username, setUsername] = useState("");
@@ -42,10 +42,10 @@ const UsernameForm = () => {
                 username,
             }));
             history.goBack();
-            // toast.success("Username changed successfully!");
+            toast.success("Username changed successfully!");
         } catch (err) {
             // console.log(err);
-            // toast.error("Error submitting changes. Please try again.");
+            toast.error("Error submitting changes. Please try again.");
             setErrors(err.response?.data);
         }
     };

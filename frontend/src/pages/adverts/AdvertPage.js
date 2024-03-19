@@ -33,7 +33,7 @@ function AdvertPage() {
                     axiosReq.get(`/adoptors/?advert_id=${id}`),
                 ]);
 
-                const usernames = adoptorsData.results.map(adoptor => adoptor.owner);
+                const usernames = adoptorsData.results.map(adoptor => adoptor.owner_id);
                 console.log("usernames: ", usernames)
                
                 

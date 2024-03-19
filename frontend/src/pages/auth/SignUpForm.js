@@ -1,19 +1,17 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
-
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
     useRedirect('loggedIn');
@@ -40,7 +38,9 @@ const SignUpForm = () => {
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData)
             history.push('/login');
-        } catch(err) {        
+            toast.success("Sign up successful. You can login now");
+        } catch(err) {   
+            toast.error("Error signing up. Please try again");     
             setErrors(err.response?.data)
         }
     };

@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Home.module.css";
 import mainImg from "../../assets/main-image.webp";
 import NoResults from "../../assets/no-results.png";
-
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "../adverts/Advert";
 import Asset from "../../components/Asset";

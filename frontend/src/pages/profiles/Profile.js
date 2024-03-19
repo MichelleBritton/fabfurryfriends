@@ -4,7 +4,6 @@ import Avatar from '../../components/Avatar';
 
 const Profile = (props) => {
     const {profile, imageSize=55} = props;
-    // Also need to access the data within the profile object so we'll destructure variables from it
     const {id, image, owner} = profile;
 
     return (

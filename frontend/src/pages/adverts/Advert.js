@@ -9,7 +9,7 @@ import { Card } from "react-bootstrap";
 import { Media } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Advert = (props) => {
     const {
@@ -37,9 +37,9 @@ const Advert = (props) => {
         try {
           await axiosRes.delete(`/adverts/${id}/`);
           history.goBack();
-        //   toast.success("Advert deleted!");
+          toast.success("Advert deleted!");
         } catch (err) {
-            // toast.error("Deletion unsuccessful. Please try again.");
+            toast.error("Deletion unsuccessful. Please try again.");
             // console.log(err);
         }
     };
@@ -52,9 +52,9 @@ const Advert = (props) => {
                 owner: currentUser.username
             };
             await axiosRes.post('/adoptors/', adopt);         
-            // toast.success("Congratulations, your request to adopt has been received!");   
+            toast.success("Congratulations, your request to adopt has been received");   
         } catch (err) {
-            // toast.error("Error submitting request. You may have already submitted a request");
+            toast.error("Error submitting request. You may have already submitted a request");
             console.log(err);
         }
     };
