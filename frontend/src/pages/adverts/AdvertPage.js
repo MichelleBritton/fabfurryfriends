@@ -32,19 +32,23 @@ function AdvertPage() {
                 const [{ data: adoptorsData }] = await Promise.all([
                     axiosReq.get(`/adoptors/?advert_id=${id}`),
                 ]);
-
-                const usernames = adoptorsData.results.map(adoptor => adoptor.owner_id);
-                console.log("usernames: ", usernames)
-               
                 
-                // Update profile data state with adoptors associated with the current advert
+                // Fetch profiles 
+                const profilesResponse = await axiosReq.get('/profiles/');                
+                const profilesData = profilesResponse.data.results;
+
+                // Map over adoptorsData and find the corresponding profiles
+                const linkedAdoptorsData = adoptorsData.results.map(adoptor => {
+                    const profile = profilesData.find(profile => profile.owner === adoptor.owner);
+                    return { ...profile, profile: profile };
+                });
+                
+                // Update profile state with adoptors' profiles
                 setProfileData(prevState => ({
                     ...prevState,
-                    pageProfile: adoptorsData.results,
+                    pageProfile: linkedAdoptorsData,
                 }));
-                
-                console.log("adoptors data: ", adoptorsData.results);
-                
+
                 setIsLoading(false);                 
             } catch (err) {
                 //console.log(err)

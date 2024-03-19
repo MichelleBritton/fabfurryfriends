@@ -15,7 +15,8 @@ class ProfileList(generics.ListAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'id'
+        'id',
+        'owner'
     ]
 
 
