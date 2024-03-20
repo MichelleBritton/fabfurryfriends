@@ -9,13 +9,17 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('adoptors', '0002_alter_adoptor_owner'),
+        ("adoptors", "0002_alter_adoptor_owner"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='adoptor',
-            name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='potential_adoptor', to=settings.AUTH_USER_MODEL),
+            model_name="adoptor",
+            name="owner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="potential_adoptor",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

@@ -9,21 +9,20 @@ class ProfileList(generics.ListAPIView):
     """
     List all profiles.
     """
+
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     filter_backends = [
         DjangoFilterBackend,
     ]
-    filterset_fields = [
-        'id',
-        'owner'
-    ]
+    filterset_fields = ["id", "owner"]
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve or update a profile if you're the owner.
     """
+
     permission_classes = [IsOwnerOrAdmin]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

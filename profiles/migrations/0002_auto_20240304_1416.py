@@ -6,88 +6,88 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0001_initial'),
+        ("profiles", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='activities',
+            model_name="profile",
+            name="activities",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='address',
+            model_name="profile",
+            name="address",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='age',
+            model_name="profile",
+            name="age",
             field=models.IntegerField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='children_age',
+            model_name="profile",
+            name="children_age",
             field=models.CharField(blank=True, max_length=25),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='daily_life',
+            model_name="profile",
+            name="daily_life",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='describe_garden',
+            model_name="profile",
+            name="describe_garden",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='describe_house',
+            model_name="profile",
+            name="describe_house",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='dog_left_alone',
+            model_name="profile",
+            name="dog_left_alone",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='email',
+            model_name="profile",
+            name="email",
             field=models.EmailField(blank=True, max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='name',
+            model_name="profile",
+            name="name",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='other_pets',
+            model_name="profile",
+            name="other_pets",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='phone',
+            model_name="profile",
+            name="phone",
             field=models.CharField(blank=True, max_length=11),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='preferred_age',
+            model_name="profile",
+            name="preferred_age",
             field=models.CharField(blank=True, max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='when',
+            model_name="profile",
+            name="when",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='where_dog_live',
+            model_name="profile",
+            name="where_dog_live",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='why',
+            model_name="profile",
+            name="why",
             field=models.TextField(blank=True),
         ),
     ]

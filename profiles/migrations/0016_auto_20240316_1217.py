@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0015_alter_profile_marital_status'),
+        ("profiles", "0015_alter_profile_marital_status"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='children',
+            model_name="profile",
+            name="children",
             field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='home_status',
+            model_name="profile",
+            name="home_status",
             field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='marital_status',
+            model_name="profile",
+            name="marital_status",
             field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='previously_owned',
+            model_name="profile",
+            name="previously_owned",
             field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='sex',
+            model_name="profile",
+            name="sex",
             field=models.CharField(max_length=255),
         ),
     ]

@@ -7,14 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0018_alter_profile_owner'),
-        ('adoptors', '0001_initial'),
+        ("profiles", "0018_alter_profile_owner"),
+        ("adoptors", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='adoptor',
-            name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='potential_adoptor', to='profiles.profile'),
+            model_name="adoptor",
+            name="owner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="potential_adoptor",
+                to="profiles.profile",
+            ),
         ),
     ]

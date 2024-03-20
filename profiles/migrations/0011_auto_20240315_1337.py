@@ -6,38 +6,50 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0010_alter_profile_age'),
+        ("profiles", "0010_alter_profile_age"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='age',
+            model_name="profile",
+            name="age",
             field=models.IntegerField(null=True),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='children',
-            field=models.IntegerField(choices=[(1, 'No'), (2, 'Yes')], default=1),
+            model_name="profile",
+            name="children",
+            field=models.IntegerField(choices=[(1, "No"), (2, "Yes")], default=1),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='home_status',
-            field=models.IntegerField(choices=[(1, 'Owned'), (2, 'Rented')], default=1),
+            model_name="profile",
+            name="home_status",
+            field=models.IntegerField(choices=[(1, "Owned"), (2, "Rented")], default=1),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='marital_status',
-            field=models.IntegerField(choices=[(1, 'Single'), (2, 'Married'), (3, 'Widowed'), (4, 'Divorced'), (5, 'Separated'), (6, 'Cohabiting')], default=1),
+            model_name="profile",
+            name="marital_status",
+            field=models.IntegerField(
+                choices=[
+                    (1, "Single"),
+                    (2, "Married"),
+                    (3, "Widowed"),
+                    (4, "Divorced"),
+                    (5, "Separated"),
+                    (6, "Cohabiting"),
+                ],
+                default=1,
+            ),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='previously_owned',
-            field=models.IntegerField(choices=[(1, 'No'), (2, 'Yes')], default=1),
+            model_name="profile",
+            name="previously_owned",
+            field=models.IntegerField(choices=[(1, "No"), (2, "Yes")], default=1),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='sex',
-            field=models.IntegerField(choices=[(1, 'Either'), (2, 'Dog'), (3, 'Bitch')], default=1),
+            model_name="profile",
+            name="sex",
+            field=models.IntegerField(
+                choices=[(1, "Either"), (2, "Dog"), (3, "Bitch")], default=1
+            ),
         ),
     ]

@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0006_auto_20240315_1301'),
+        ("profiles", "0006_auto_20240315_1301"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='home_status',
-            field=models.IntegerField(choices=[(1, 'Owned'), (2, 'Rented')], default=1),
+            model_name="profile",
+            name="home_status",
+            field=models.IntegerField(choices=[(1, "Owned"), (2, "Rented")], default=1),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='previously_owned',
-            field=models.IntegerField(choices=[(1, 'No'), (2, 'Yes')], default=1),
+            model_name="profile",
+            name="previously_owned",
+            field=models.IntegerField(choices=[(1, "No"), (2, "Yes")], default=1),
         ),
     ]

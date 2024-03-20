@@ -15,37 +15,85 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=255)),
-                ('email', models.EmailField(max_length=255)),
-                ('phone', models.CharField(max_length=11)),
-                ('address', models.TextField()),
-                ('marital_status', models.IntegerField(choices=[(1, 'Single'), (2, 'Married'), (3, 'Widowed'), (4, 'Divorced'), (5, 'Separated'), (6, 'Cohabiting')], default=1)),
-                ('age', models.IntegerField()),
-                ('children', models.IntegerField(choices=[(1, 'No'), (2, 'Yes')], default=1)),
-                ('children_age', models.CharField(max_length=25)),
-                ('daily_life', models.TextField()),
-                ('other_pets', models.TextField()),
-                ('describe_house', models.TextField()),
-                ('describe_garden', models.TextField()),
-                ('home_status', models.IntegerField(choices=[(1, 'Owned'), (2, 'Rented')], default=1)),
-                ('where_dog_live', models.TextField()),
-                ('dog_left_alone', models.TextField()),
-                ('previously_owned', models.IntegerField(choices=[(1, 'No'), (2, 'Yes')], default=1)),
-                ('why', models.TextField()),
-                ('sex', models.IntegerField(choices=[(1, 'Either'), (2, 'Dog'), (3, 'Bitch')], default=1)),
-                ('preferred_age', models.CharField(max_length=255)),
-                ('when', models.TextField()),
-                ('activities', models.TextField()),
-                ('image', models.ImageField(default='../default_profile_red_nyvnez', upload_to='images/')),
-                ('owner', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=255)),
+                ("email", models.EmailField(max_length=255)),
+                ("phone", models.CharField(max_length=11)),
+                ("address", models.TextField()),
+                (
+                    "marital_status",
+                    models.IntegerField(
+                        choices=[
+                            (1, "Single"),
+                            (2, "Married"),
+                            (3, "Widowed"),
+                            (4, "Divorced"),
+                            (5, "Separated"),
+                            (6, "Cohabiting"),
+                        ],
+                        default=1,
+                    ),
+                ),
+                ("age", models.IntegerField()),
+                (
+                    "children",
+                    models.IntegerField(choices=[(1, "No"), (2, "Yes")], default=1),
+                ),
+                ("children_age", models.CharField(max_length=25)),
+                ("daily_life", models.TextField()),
+                ("other_pets", models.TextField()),
+                ("describe_house", models.TextField()),
+                ("describe_garden", models.TextField()),
+                (
+                    "home_status",
+                    models.IntegerField(
+                        choices=[(1, "Owned"), (2, "Rented")], default=1
+                    ),
+                ),
+                ("where_dog_live", models.TextField()),
+                ("dog_left_alone", models.TextField()),
+                (
+                    "previously_owned",
+                    models.IntegerField(choices=[(1, "No"), (2, "Yes")], default=1),
+                ),
+                ("why", models.TextField()),
+                (
+                    "sex",
+                    models.IntegerField(
+                        choices=[(1, "Either"), (2, "Dog"), (3, "Bitch")], default=1
+                    ),
+                ),
+                ("preferred_age", models.CharField(max_length=255)),
+                ("when", models.TextField()),
+                ("activities", models.TextField()),
+                (
+                    "image",
+                    models.ImageField(
+                        default="../default_profile_red_nyvnez", upload_to="images/"
+                    ),
+                ),
+                (
+                    "owner",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_at'],
+                "ordering": ["-created_at"],
             },
         ),
     ]

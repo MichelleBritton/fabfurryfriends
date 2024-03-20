@@ -9,13 +9,17 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('profiles', '0016_auto_20240316_1217'),
+        ("profiles", "0016_auto_20240316_1217"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='owner',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='owner_profile', to=settings.AUTH_USER_MODEL),
+            model_name="profile",
+            name="owner",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="owner_profile",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

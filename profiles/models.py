@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    """ 
+    """
     Model to store data regarding user profile
     """
+
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -31,19 +32,16 @@ class Profile(models.Model):
     preferred_age = models.CharField(max_length=255, blank=True)
     when = models.TextField(blank=True)
     activities = models.TextField(blank=True)
-    image = models.ImageField(
-        upload_to='images/', default='../default_profile_lyldgl'
-    )
+    image = models.ImageField(upload_to="images/", default="../default_profile_lyldgl")
 
     class Meta:
-        ordering = ['-created_at']
-    
+        ordering = ["-created_at"]
+
     def __str__(self):
         return f"{self.owner}'s profile"
 
 
-
-# Ensure that every time a user is created, a signal 
+# Ensure that every time a user is created, a signal
 # will trigger the Profile model to be created
 def create_profile(sender, instance, created, **kwargs):
     if created:
@@ -51,4 +49,3 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_profile, sender=User)
-

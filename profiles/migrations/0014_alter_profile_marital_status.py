@@ -6,13 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profiles', '0013_profile_marital_status'),
+        ("profiles", "0013_profile_marital_status"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='marital_status',
-            field=models.CharField(choices=[('Single', 'Single'), ('Married', 'Married'), ('Widowed', 'Widowed'), ('Divorced', 'Divorced'), ('Separated', 'Separated'), ('Cohabiting', 'Cohabiting')], max_length=255),
+            model_name="profile",
+            name="marital_status",
+            field=models.CharField(
+                choices=[
+                    ("Single", "Single"),
+                    ("Married", "Married"),
+                    ("Widowed", "Widowed"),
+                    ("Divorced", "Divorced"),
+                    ("Separated", "Separated"),
+                    ("Cohabiting", "Cohabiting"),
+                ],
+                max_length=255,
+            ),
         ),
     ]
