@@ -5,9 +5,9 @@ import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
-import { Card } from "react-bootstrap";
-import { Media } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import Button from "react-bootstrap/Button";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
