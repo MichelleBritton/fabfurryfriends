@@ -14,6 +14,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 
 function AdvertPage() {
+    const [adoptorProfile, setAdoptorProfile] = useState({results: []});
     const { id } = useParams();
     const [advert, setAdvert] = useState({results: []});
     const [isLoading, setIsLoading] = useState(true); 
@@ -31,27 +32,27 @@ function AdvertPage() {
                 ]);
                 setAdvert({ results: [advertData] });
     
-                // Fetch adoptors by advert_id
-                const [{ data: adoptorsData }] = await Promise.all([
+                // Fetch adoptors by advert_id, and profiles
+                const [{ data: adoptorsData }, { data: profiles }] = await Promise.all([
                     axiosReq.get(`/adoptors/?advert_id=${id}`),
+                    axiosReq.get('/profiles/'),   
                 ]);
-                
-                // Fetch profiles 
-                const profilesResponse = await axiosReq.get('/profiles/');                
-                const profilesData = profilesResponse.data.results;
 
                 // Map over adoptorsData and find the corresponding profiles
                 const linkedAdoptorsData = adoptorsData.results.map(adoptor => {
-                    const profile = profilesData.find(profile => profile.owner === adoptor.owner);
+                    const profile = profiles.results.find(profile => profile.owner === adoptor.owner);
                     return { ...profile, profile: profile };
                 });
                 
+                // Update adoptor profile state with corresponding profiles
+                setAdoptorProfile(linkedAdoptorsData);
+
                 // Update profile state with adoptors' profiles
                 setProfileData(prevState => ({
                     ...prevState,
-                    pageProfile: linkedAdoptorsData,
+                    pageProfile: adoptorProfile,
                 }));
-
+               
                 setIsLoading(false);                 
             } catch (err) {
                 //console.log(err)
@@ -59,8 +60,7 @@ function AdvertPage() {
         };
 
         fetchData();
-    }, [id, setProfileData]);
-    
+    }, [id, setProfileData,setAdoptorProfile]);  
     
     return (
         <Container className={appStyles.MainContent} fluid>
@@ -75,8 +75,8 @@ function AdvertPage() {
                             {isLoading ? (
                                 <Asset spinner />
                             ) : (
-                                pageProfile && pageProfile.length ? (
-                                    pageProfile.map((profile) => (
+                                adoptorProfile && adoptorProfile.length ? (
+                                    adoptorProfile.map((profile) => (
                                         <Profile key={profile.id} profile={profile} />
                                     ))
                                 ) : (

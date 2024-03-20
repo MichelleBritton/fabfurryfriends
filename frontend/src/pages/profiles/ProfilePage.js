@@ -236,7 +236,6 @@ function ProfilePage( props ) {
                                 {mainProfile} 
                             </>  
                         ) : (
-                            // !! ADD A NOT AUTHORISED MESSAGE HERE !!
                             history.push('/')
                         )
                     ) : (
