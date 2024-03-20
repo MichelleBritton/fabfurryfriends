@@ -55,7 +55,7 @@ const Advert = (props) => {
             toast.success("Congratulations, your request to adopt has been received");   
         } catch (err) {
             toast.error("Error submitting request. You may have already submitted a request");
-            console.log(err);
+            // console.log(err);
         }
     };
     

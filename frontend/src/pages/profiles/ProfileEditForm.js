@@ -145,7 +145,7 @@ const ProfileEditForm = () => {
                         previously_owned, why, sex, preferred_age,
                         when, activities, image });
                 } catch (err) {
-                    console.log(err);
+                    // console.log(err);
                     history.push("/");
                 }
             } else {
