@@ -56,6 +56,15 @@ function AdvertsPage ({ message }) {
                     </Form>                  
                 </Col>
                 <Col className="ml-auto" lg={9} xl={10}>
+                    <div className={`${appStyles.Content} mx-3 mb-4`}>
+                        <h2 className={`${appStyles.Red}`}>Our Dogs</h2>
+                        <p>
+                            These dogs are currently available for adoption. If you would like to adopt any of these dogs, 
+                            please click on the "I would like to adopt" button at the bottom of the advert.  Please ensure
+                            that your profile has been fully completed before sending an adoption request. Requests to adopt
+                            will not be processed without a full profile.
+                        </p>
+                    </div>
                     {hasLoaded ? (
                         adverts.results.length ? (
                             <InfiniteScroll 
