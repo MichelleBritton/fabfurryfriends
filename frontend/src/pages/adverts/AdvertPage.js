@@ -33,14 +33,19 @@ function AdvertPage() {
                 setAdvert({ results: [advertData] });
     
                 // Fetch adoptors by advert_id, and profiles
-                const [{ data: adoptorsData }, { data: profiles }] = await Promise.all([
+                const [
+                    { data: adoptorsData }, 
+                    { data: profiles }
+                ] = await Promise.all([
                     axiosReq.get(`/adoptors/?advert_id=${id}`),
                     axiosReq.get('/profiles/'),   
                 ]);
 
                 // Map over adoptorsData and find the corresponding profiles
                 const linkedAdoptorsData = adoptorsData.results.map(adoptor => {
-                    const profile = profiles.results.find(profile => profile.owner === adoptor.owner);
+                    const profile = profiles.results.find(
+                        profile => profile.owner === adoptor.owner
+                    );
                     return { ...profile, profile: profile };
                 });
                 
@@ -67,7 +72,11 @@ function AdvertPage() {
             <Row>
                 <Col className="mr-auto" md={3}>
                     <BackButton />
-                    <QuickFacts {...advert.results[0]} setAdvert={setAdvert} advertPage />
+                    <QuickFacts 
+                        {...advert.results[0]} 
+                        setAdvert={setAdvert} 
+                        advertPage 
+                    />
 
                     {isAdmin && (
                         <div className={`${appStyles.Content} mt-5`}>
@@ -77,7 +86,10 @@ function AdvertPage() {
                             ) : (
                                 adoptorProfile && adoptorProfile.length ? (
                                     adoptorProfile.map((profile) => (
-                                        <Profile key={profile.id} profile={profile} />
+                                        <Profile 
+                                            key={profile.id} 
+                                            profile={profile} 
+                                        />
                                     ))
                                 ) : (
                                     <div>No adoptors found for this advert.</div>
@@ -87,7 +99,11 @@ function AdvertPage() {
                     )}
                 </Col>
                 <Col className="ml-auto" md={8}>
-                    <Advert {...advert.results[0]} setAdvert={setAdvert} advertPage /> 
+                    <Advert 
+                        {...advert.results[0]} 
+                        setAdvert={setAdvert} 
+                        advertPage 
+                    /> 
                 </Col>
             </Row>
         </Container>                

@@ -43,9 +43,17 @@ function AdvertsPage ({ message }) {
     return (
         <Container className={`${appStyles.MainContent}`} fluid>
             <Row>
-                <Col className={`${appStyles.Content} mr-auto mb-5`} xs={12} lg={3} xl={2}>
+                <Col 
+                    className={`${appStyles.Content} mr-auto mb-5`} 
+                    xs={12} 
+                    lg={3} 
+                    xl={2}
+                >
                     <i className={`fas fa-search ${styles.SearchIcon}`} />
-                    <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
+                    <Form 
+                        className={styles.SearchBar} 
+                        onSubmit={(event) => event.preventDefault()}
+                    >
                         <Form.Control 
                             value={query} 
                             onChange={(event) => setQuery(event.target.value)} 
@@ -59,10 +67,13 @@ function AdvertsPage ({ message }) {
                     <div className={`${appStyles.Content} mx-3 mb-4`}>
                         <h2 className={`${appStyles.Red}`}>Our Dogs</h2>
                         <p>
-                            These dogs are currently available for adoption. If you would like to adopt any of these dogs, 
-                            please click on the "I would like to adopt" button at the bottom of the advert.  Please ensure
-                            that your profile has been fully completed before sending an adoption request. Requests to adopt
-                            will not be processed without a full profile.
+                            These dogs are currently available for adoption. 
+                            If you would like to adopt any of these dogs, please 
+                            click on the "I would like to adopt" button at the 
+                            bottom of the advert.  Please ensure that your profile 
+                            has been fully completed before sending an adoption 
+                            request. Requests to adopt will not be processed without 
+                            a full profile.
                         </p>
                     </div>
                     {hasLoaded ? (
@@ -70,7 +81,13 @@ function AdvertsPage ({ message }) {
                             <InfiniteScroll 
                                 children={
                                     adverts.results.map((advert) => (  
-                                        <Col key={advert.id} className={styles.Card} xs={12} md={6} xl={4}>
+                                        <Col 
+                                            key={advert.id} 
+                                            className={styles.Card} 
+                                            xs={12} 
+                                            md={6} 
+                                            xl={4}
+                                        >
                                             <Advert {...advert} setAdverts={setAdverts} /> 
                                         </Col>                  
                                     ))

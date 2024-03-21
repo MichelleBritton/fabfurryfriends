@@ -19,7 +19,10 @@ export const MoreDropdown = ({handleEdit, handleDelete}) => {
         <Dropdown className="ml-auto" drop="left">
             <Dropdown.Toggle as={ThreeDots} />
 
-            <Dropdown.Menu className="text-center" popperConfig={{strategy: "fixed"}}>
+            <Dropdown.Menu 
+                className="text-center" 
+                popperConfig={{strategy: "fixed"}}
+            >
                 <Dropdown.Item 
                     className={styles.DropdownItem}
                     onClick={handleEdit}
@@ -43,7 +46,10 @@ export function ProfileEditDropdown({ id }) {
     const history = useHistory();
 
     return (
-        <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+        <Dropdown 
+            className={`ml-auto px-3 ${styles.Absolute}`} 
+            drop="left"
+        >
             <Dropdown.Toggle as={ThreeDots} />
             <Dropdown.Menu>
             <Dropdown.Item

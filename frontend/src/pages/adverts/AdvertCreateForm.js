@@ -83,10 +83,14 @@ function AdvertCreateForm() {
             // POST request to create new advert
             const {data} = await axiosReq.post('/adverts/', formData);
             history.push(`/adverts/${data.id}`);
-            toast.success("Form submission successful. Your advert has been created");
+            toast.success(
+                "Form submission successful. Your advert has been created"
+            );
         } catch(err){
             // console.log(err)
-            toast.error("Error submitting form. Please try again");
+            toast.error(
+                "Error submitting form. Please try again"
+            );
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }
@@ -253,7 +257,10 @@ function AdvertCreateForm() {
         >
             cancel
         </Button>
-        <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
+        <Button 
+            className={`${btnStyles.Button} ${btnStyles.Bright}`} 
+            type="submit"
+        >
             create
         </Button>
         </div>
@@ -264,7 +271,10 @@ function AdvertCreateForm() {
             <Row>
                 <Col className="py-2 mx-auto" md={6} lg={8}>
                     <Container
-                        className={`${appStyles.Content} d-flex flex-column justify-content-center`}
+                        className={`
+                            ${appStyles.Content} 
+                            d-flex flex-column justify-content-center
+                        `}
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -273,18 +283,32 @@ function AdvertCreateForm() {
                                         <Image className={appStyles.Image} src={image} rounded />
                                     </figure>
                                     <div>
-                                        <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload" >
+                                        <Form.Label
+                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`} 
+                                            htmlFor="image-upload" 
+                                        >
                                             Change the image
                                         </Form.Label>
                                     </div>
                                 </>
                             ) : (
-                                <Form.Label className="d-flex justify-content-center" htmlFor="image-upload">                                    
-                                    <Asset src={defaultImage} message="Click or tap to upload an image" />                                    
+                                <Form.Label 
+                                    className="d-flex justify-content-center" 
+                                    htmlFor="image-upload"
+                                >                                    
+                                    <Asset 
+                                        src={defaultImage} 
+                                        message="Click or tap to upload an image" 
+                                    />                                    
                                 </Form.Label>
                             )}
                            
-                            <Form.File id="image-upload" accept="image/*" onChange={handleChangeImage} ref={imageInput} />
+                            <Form.File 
+                                id="image-upload" 
+                                accept="image/*" 
+                                onChange={handleChangeImage} 
+                                ref={imageInput} 
+                            />
                             {errors.image?.map((message, idx) => (
                                 <Alert key={idx} variant="warning">
                                     {message}

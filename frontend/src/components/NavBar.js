@@ -2,7 +2,9 @@ import React from "react";
 import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.png";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import { 
+    useCurrentUser, useSetCurrentUser 
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 
 import { Navbar } from "react-bootstrap";
@@ -48,7 +50,11 @@ const NavBar = () => {
                 activeClassName={styles.Active}
                 to={`/profiles/${currentUser?.profile_id}`}
             >
-                <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+                <Avatar 
+                    src={currentUser?.profile_image} 
+                    text="Profile" 
+                    height={40} 
+                />
             </NavLink>
 
             <NavLink      
@@ -83,7 +89,12 @@ const NavBar = () => {
     );
         
     return (
-        <Navbar expanded={expanded} className={styles.NavBar} expand="lg" fixed="top">
+        <Navbar 
+            expanded={expanded} 
+            className={styles.NavBar} 
+            expand="lg" 
+            fixed="top"
+        >
             <Container fluid>
                 <NavLink to="/">
                     <Navbar.Brand className="pl-5">

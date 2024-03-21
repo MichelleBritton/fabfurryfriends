@@ -35,9 +35,9 @@ const Advert = (props) => {
     // Handle advert deletion
     const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/adverts/${id}/`);
-          history.goBack();
-          toast.success("Advert deleted!");
+            await axiosRes.delete(`/adverts/${id}/`);
+            history.goBack();
+            toast.success("Advert deleted!");
         } catch (err) {
             toast.error("Deletion unsuccessful. Please try again.");
             // console.log(err);
@@ -52,20 +52,30 @@ const Advert = (props) => {
                 owner: currentUser.username
             };
             await axiosRes.post('/adoptors/', adopt);         
-            toast.success("Congratulations, your request to adopt has been received");   
+            toast.success(
+                "Congratulations, your request to adopt has been received"
+            );   
         } catch (err) {
-            toast.error("Error submitting request. You may have already submitted a request");
+            toast.error(
+                "Error submitting request. You may have already submitted a request"
+            );
             // console.log(err);
         }
     };
     
     return (
         <Card className={appStyles.Content}>
-            <Card.Img src={image} alt={dog_name} className={appStyles.ImageRounded} />
+            <Card.Img
+                src={image}
+                alt={dog_name}
+                className={appStyles.ImageRounded} 
+            />
             {location.pathname === `/adverts/${id}` ? (
                 <>
                     <Card.Body className={styles.CardBody}>
-                        <Media className="d-flex align-items-center justify-content-between">   
+                        <Media
+                            className="d-flex align-items-center justify-content-between"
+                        >   
                             <span>Updated: {updated_at}</span>
                             {isAdmin && advertPage && (
                                 <MoreDropdown
@@ -75,7 +85,12 @@ const Advert = (props) => {
                             )}
                         </Media>
                     </Card.Body>                
-                    {dog_name && <Card.Title className={`${appStyles.Teal} ${styles.CardTitle} text-left`}>{dog_name}</Card.Title>}               
+                    {dog_name && 
+                        <Card.Title
+                            className={`${appStyles.Teal} ${styles.CardTitle} text-left`}
+                        >
+                            {dog_name}
+                        </Card.Title>}               
                     <Card.Body className={styles.CardBody}>
                         {content && <Card.Text>{content}</Card.Text>}
                         {currentUser && (
@@ -91,7 +106,9 @@ const Advert = (props) => {
             ) : (
                 <>
                     <Card.Body className={styles.CardBody}>
-                        <Media className="d-flex align-items-center justify-content-between">                           
+                        <Media
+                            className="d-flex align-items-center justify-content-between"
+                        >                           
                             {isAdmin && advertPage && (
                                 <MoreDropdown
                                     handleEdit={handleEdit}
@@ -101,7 +118,12 @@ const Advert = (props) => {
                         </Media>
                     </Card.Body>
                     <Link to={`/adverts/${id}`}>
-                        {dog_name && <Card.Title className="text-center">{dog_name}</Card.Title>}
+                        {dog_name && 
+                            <Card.Title 
+                                className="text-center"
+                            >
+                                {dog_name}
+                            </Card.Title>}
                     </Link>
                 </>
             )}

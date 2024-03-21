@@ -48,9 +48,12 @@ function AdvertEditForm() {
                     quick_fact_3, quick_fact_4, quick_fact_5, content, image
                 } = data;
 
-                // Check if user is an admin user and set advert data otherwise redirect to home page
-                isAdmin ? setAdvertData({dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
-                    quick_fact_3, quick_fact_4, quick_fact_5, content, image}) : history.push('/');
+                // Check if user is an admin user and 
+                // set advert data otherwise redirect to home page
+                isAdmin ? setAdvertData({
+                    dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
+                    quick_fact_3, quick_fact_4, quick_fact_5, content, image
+                }) : history.push('/');
             } catch(err) {
                 // console.log(err);
             }
@@ -102,10 +105,14 @@ function AdvertEditForm() {
             // PUT request to update advert
             await axiosReq.put(`/adverts/${id}/`, formData);
             history.push(`/adverts/${id}`);
-            toast.success("Edit advert successful");
+            toast.success(
+                "Edit advert successful"
+            );
         } catch(err){
             // console.log(err);       
-            toast.error("Error editing advert. Please try again");     
+            toast.error(
+                "Error editing advert. Please try again"
+            );     
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }
@@ -272,46 +279,73 @@ function AdvertEditForm() {
             >
                 cancel
             </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+            <Button 
+                className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+                type="submit"
+            >
                 save
             </Button>
         </div>
     );
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">   
-                <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                </figure>
-                <div>
-                    <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload" >
-                        Change the image
-                    </Form.Label>
-                </div>                                                
-                
-                <Form.File id="image-upload" accept="image/*" onChange={handleChangeImage} ref={imageInput} />
-                {errors.image?.map((message, idx) => (
-                    <Alert key={idx} variant="warning">
-                        {message}
-                    </Alert>
-                ))}
+    return (
+        <Form onSubmit={handleSubmit}>
+            <Row>
+                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                    <Container
+                        className={`
+                        ${appStyles.Content} 
+                        d-flex flex-column justify-content-center
+                        `}
+                    >
+                        <Form.Group className="text-center">   
+                            <figure>
+                                <Image 
+                                    className={appStyles.Image} 
+                                    src={image} 
+                                    rounded 
+                                />
+                            </figure>
+                            <div>
+                                <Form.Label 
+                                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`} 
+                                    htmlFor="image-upload" 
+                                >
+                                    Change the image
+                                </Form.Label>
+                            </div>                                                
 
-            </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
-  );
+                            <Form.File 
+                                id="image-upload" 
+                                accept="image/*" 
+                                onChange={handleChangeImage} 
+                                ref={imageInput} 
+                            />
+                            {errors.image?.map((message, idx) => (
+                                <Alert key={idx} variant="warning">
+                                    {message}
+                                </Alert>
+                            ))}
+                        </Form.Group>
+                        <div className="d-md-none">
+                            {textFields}
+                        </div>
+                    </Container>
+                </Col>
+                <Col 
+                    md={5} 
+                    lg={4} 
+                    className="d-none d-md-block p-0 p-md-2"
+                >
+                    <Container 
+                        className={appStyles.Content}
+                    >
+                        {textFields}
+                    </Container>
+                </Col>
+            </Row>
+        </Form>
+    );
 }
 
 export default AdvertEditForm;

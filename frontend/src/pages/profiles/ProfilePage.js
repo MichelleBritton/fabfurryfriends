@@ -48,9 +48,16 @@ function ProfilePage( props ) {
             <Col className={appStyles.Content}>
                 <Row>
                     {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-                    <Col className={`${styles.Border} d-flex flex-row justify-content-center align-items-center py-5 mb-5`}>
+                    <Col 
+                        className={`
+                            ${styles.Border} 
+                            d-flex flex-row justify-content-center align-items-center py-5 mb-5
+                        `}
+                    >
                         <Avatar src={profile?.image} height={imageSize} />                       
-                        <h3 className={appStyles.Red}>{profile?.owner}'s Profile</h3>
+                        <h3 className={appStyles.Red}>
+                            {profile?.owner}'s Profile
+                        </h3>
                     </Col>
                 </Row>
                 <Row className="mb-3">

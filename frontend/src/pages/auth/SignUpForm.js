@@ -97,7 +97,10 @@ const SignUpForm = () => {
                             <Alert variant="warning" key={idx}>{message}</Alert>
                         )}
             
-                        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+                        <Button 
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} 
+                            type="submit"
+                        >
                             Sign up 
                         </Button>
                     </Form>         
