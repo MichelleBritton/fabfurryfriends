@@ -70,7 +70,7 @@ function AdvertPage() {
     return (
         <Container className={appStyles.MainContent} fluid>
             <Row>
-                <Col className="mr-auto" md={3}>
+                <Col className="mr-auto" md={6} lg={5} xl={4}>
                     <BackButton />
                     <QuickFacts 
                         {...advert.results[0]} 
@@ -98,7 +98,7 @@ function AdvertPage() {
                         </div>            
                     )}
                 </Col>
-                <Col className="ml-auto" md={8}>
+                <Col className="ml-auto" md={6} lg={7} xl={8}>
                     <Advert 
                         {...advert.results[0]} 
                         setAdvert={setAdvert} 

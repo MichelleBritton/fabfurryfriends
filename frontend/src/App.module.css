@@ -16,8 +16,14 @@
     background: #fff;
     border: 2px solid #5ea5a4;
     border-radius: 20px;
-    padding: 40px;
+    padding: 20px;
     white-space: pre-line;
+}
+
+@media only screen and (min-width:1400px) {	
+    .Content {       
+        padding: 40px;
+    }
 }
 
 .MainContent {
