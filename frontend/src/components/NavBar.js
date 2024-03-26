@@ -34,7 +34,7 @@ const NavBar = () => {
     const createAdvertIcon = (
         <NavLink 
             exact
-            className="ml-lg-4"
+            className="ml-lg-2 ml-xl-4"
             activeClassName={`${styles.Active} clearfix`}
             to="/adverts/create"
         >
@@ -46,7 +46,7 @@ const NavBar = () => {
         <>
             <NavLink 
                 exact
-                className="ml-lg-4"
+                className="ml-lg-2 ml-xl-4"
                 activeClassName={styles.Active}
                 to={`/profiles/${currentUser?.profile_id}`}
             >
@@ -58,7 +58,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink      
-                className={`${styles.NavLink} ml-lg-4`} 
+                className={`${styles.NavLink} ml-lg-2 ml-xl-4`} 
                 to="/" 
                 onClick={handleSignOut}
             >
@@ -71,7 +71,7 @@ const NavBar = () => {
         <>
             <NavLink 
                 exact
-                className="ml-lg-4"
+                className="ml-lg-2 ml-xl-4"
                 activeClassName={styles.Active}
                 to="/signup"
             >
@@ -79,7 +79,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink 
                 exact
-                className="ml-lg-4"
+                className="ml-lg-2 ml-xl-4"
                 activeClassName={styles.Active}
                 to="/login"
             >
@@ -118,7 +118,7 @@ const NavBar = () => {
                         </NavLink>
                         <NavLink 
                             exact
-                            className="ml-lg-4"
+                            className="ml-lg-2 ml-xl-4"
                             activeClassName={styles.Active}
                             to="/adverts"
                         >
