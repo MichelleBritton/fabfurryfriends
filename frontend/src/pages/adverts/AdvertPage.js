@@ -79,7 +79,7 @@ function AdvertPage() {
                     />
 
                     {isAdmin && (
-                        <div className={`${appStyles.Content} mt-5`}>
+                        <div className={`${appStyles.Content} my-5`}>
                             <h2 className={appStyles.Red}>Adopton requests</h2>            
                             {isLoading ? (
                                 <Asset spinner />
