@@ -36,7 +36,7 @@ const Advert = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/adverts/${id}/`);
-            history.goBack();
+            history.push('/');
             toast.success("Advert deleted!");
         } catch (err) {
             toast.error("Deletion unsuccessful. Please try again.");

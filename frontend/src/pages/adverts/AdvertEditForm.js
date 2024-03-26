@@ -274,13 +274,13 @@ function AdvertEditForm() {
             ))}
     
             <Button
-                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                className={`${btnStyles.Button} ${btnStyles.Bright}`}
                 onClick={() => history.goBack()}
             >
                 cancel
             </Button>
             <Button 
-                className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+                className={`${btnStyles.Button} ${btnStyles.Bright}`} 
                 type="submit"
             >
                 save
@@ -308,7 +308,7 @@ function AdvertEditForm() {
                             </figure>
                             <div>
                                 <Form.Label 
-                                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`} 
+                                    className={`${btnStyles.Button} ${btnStyles.Bright} btn`} 
                                     htmlFor="image-upload" 
                                 >
                                     Change the image
