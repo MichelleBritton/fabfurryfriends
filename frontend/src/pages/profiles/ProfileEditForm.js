@@ -146,10 +146,13 @@ const ProfileEditForm = () => {
                         where_dog_live, dog_left_alone, previously_owned, why, 
                         sex, preferred_age, when, activities, image });
                 } catch (err) {
-                    // console.log(err);
+                    // console.log(err);                    
                     history.push("/");
                 }
             } else {
+                toast.error(
+                    "You are not authorised to view this page"
+                )
                 history.push("/");
             }
         };
