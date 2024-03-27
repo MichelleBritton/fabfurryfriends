@@ -11,9 +11,77 @@ Back to [README.MD](README.MD)
 - [Bugs](#bugs)
 
 ## Manual Testing
-| **Testing**          | **Action**          | **Expected**          | **Outcome**          |
-|----------------------|---------------------|-----------------------|----------------------|
-|                      |                     |                       |                      |
+
+**Navigation (any auth)**
+| **Testing**            | **Action**            | **Expected**                | **Outcome**          |
+|------------------------|-----------------------|-----------------------------|----------------------|
+|Logo                    |Click on logo          |Loads home page              |As expected           |
+|Home                    |Click on Home          |Loads home page              |As expected           |
+|Our Dogs                |Click on Our Dogs      |Loads the adverts page       |As expected           |
+
+**Navigation (Logged Out)**
+| **Testing**                       | **Action**            | **Expected**                | **Outcome**          |
+|-----------------------------------|-----------------------|-----------------------------|----------------------|
+|Sign Up                            |Click on Sign Up       |Loads the sign up page       |As expected           |
+|Login                              |Click on Login         |Loads the login page         |As expected           |
+|Create Advert                      |View page              |Not visible                  |As expected           |
+|Profile                            |View page              |Not visible                  |As expected           |
+|Logout                             |View page              |Not visible                  |As expected           |
+
+**Navigation (Logged In)**
+| **Testing**                       | **Action**            | **Expected**                            | **Outcome**          |
+|-----------------------------------|-----------------------|-----------------------------------------|----------------------|
+|Create Advert in NavBar            |Click on Create Advert |Loads the create advert page             |As expected           |
+|Profile in NavBar                  |Click on Profile       |Loads the profile page                   |As expected           |
+|Logout in NavBar                   |Click on Logout        |Logs user out and redirects to home page |As expected           |
+
+**Home Page (Any auth)**
+| **Testing**                       | **Action**                 | **Expected**                          | **Outcome**          |
+|-----------------------------------|----------------------------|---------------------------------------|----------------------|
+|Four random adverts                |Refresh page multiple times |Selection of adverts change on refresh |As expected           |
+|Dog name link                      |Click on dog name           |Loads advert detail page               |As expected           |
+|View all link                      |Click on link               |Loads the adverts page                 |As expected           |
+|Email link in footer               |Click on link               |Opens up an email client               |As expected           |
+
+**Our Dogs Page (Any auth)**
+| **Testing**        | **Action**      | **Expected**                                                                   | **Outcome**          |
+|--------------------|-----------------|--------------------------------------------------------------------------------|----------------------|
+|Adverts are visible |View page        |12 adverts are initially displayed in descending order based on created date    |As expected           |
+|Infinite scroll     |Scroll down page |More adverts are loaded                                                         |As expected           |
+|Search              |Type in keyword  |Adverts containing the keyword in either dog_name, breed or content are returned|As expected           |
+|Advert details      |View page        |Adverts contain an image and dog name which links to advert detail page         |As expected           |
+
+**Advert Detail Page (Any auth)**
+| **Testing**                 | **Action**      | **Expected**                                                                   | **Outcome**          |
+|-----------------------------|-----------------|--------------------------------------------------------------------------------|----------------------|
+|Advert details               |View page        |Advert image, date updated, dog name and content is visible                     |As expected           |
+|Quick Facts                  |View page        |A Quick Facts panel is visible in the left hand column                          |As expected           |
+|Go back button               |Click button     |Button is visible in the left hand column and redirects to previous page        |As expected           |
+|Adoption button              |View page        |No adoption button visible                                                      |As expected           |
+|Adoption requests            |View page        |No adoption requests visible                                                    |As expected           |
+|Option to edit/delete advert |View page        |No option to edit/delete advert visible                                         |As expected           |
+
+**Advert Detail Page (Logged In User)**
+| **Testing**                 | **Action**      | **Expected**                                                                   | **Outcome**          |
+|-----------------------------|-----------------|--------------------------------------------------------------------------------|----------------------|
+|Adoption button              |Click button     |Toasify message confirming success or failure appears                           |As expected           |
+|Adoption requests            |View page        |No adoption requests visible                                                    |As expected           |
+|Option to edit/delete advert |View page        |No option to edit/delete advert visible                                         |As expected           |
+
+**Advert Detail Page (Logged In Admin User)**
+| **Testing**                 | **Action**                                   | **Expected**                                    | **Outcome**          |
+|-----------------------------|----------------------------------------------|-------------------------------------------------|----------------------|
+|Adoption requests            |View page                                     |Panel is visible in left hand column             |As expected           |
+|Adoption request profiles    |Compare api/adoptor endpoint and profile list |Results to match                                 |As expected           |
+|Adoption requests Avatar     |Click avatar                                  |User profile of adoptee is loaded                |As expected           |
+|Option to edit/delete advert |Click on three dots                           |Pop out menu with two icons to edit or delete    |As expected           |
+|Edit advert link             |Click on icon                                 |Loads edit advert page                           |As expected           |
+|Delete advert link           |Click on icon                                 |Delete advert, redirect to home, alert to confirm|As expected           |
+
+**Edit Advert Page (Logged In Admin User)**
+| **Testing**            | **Action**                                             | **Expected**                                  | **Outcome**          |
+|------------------------|--------------------------------------------------------|-----------------------------------------------|----------------------|
+|Authentication          |Login as non-admin user, try to access edit advert page |Redirect to home page                          |As expected           |
 
     
     
@@ -92,111 +160,41 @@ In order to test performance and accessibility, I used Lighthouse within the Chr
 
 ![Home Lighthouse Report](documentation/accessibility/home.png)
 
-#### Menu
+#### Adverts
 
-![Menu Lighthouse Report](documentation/accessibility/menu.png)
+![Adverts Lighthouse Report](documentation/accessibility/adverts.png)
 
-#### Book
+#### Advert Detail
 
-![Book Lighthouse Report](documentation/accessibility/book.png)
+![Advert Detail Lighthouse Report](documentation/accessibility/advert-detail.png)
 
-#### Register
+#### Edit Advert
 
-![Register Lighthouse Report](documentation/accessibility/register.png)
+![Edit Advert Lighthouse Report](documentation/accessibility/advert-edit.png)
+
+#### Create Advert
+
+![Create Advert Lighthouse Report](documentation/accessibility/advert-create.png)
+
+#### Profile
+
+![Profile Lighthouse Report](documentation/accessibility/profile.png)
+
+#### Edit Profile
+
+![Edit Profile Lighthouse Report](documentation/accessibility/profile-edit.png)
+
+#### Sign Up
+
+![Sign Up Lighthouse Report](documentation/accessibility/signup.png)
 
 #### Login
 
 ![Login Lighthouse Report](documentation/accessibility/login.png)
 
-#### My Profile
-
-![My Profile Lighthouse Report](documentation/accessibility/my-profile.png)
-
-#### Edit Booking
-
-![Edit Booking Lighthouse Report](documentation/accessibility/edit-booking.png)
-
-#### Delete Booking
-
-![Delete Booking Lighthouse Report](documentation/accessibility/delete-booking.png)
-
-#### Staff Profile
-
-![Staff Profile Lighthouse Report](documentation/accessibility/staff-profile.png)
-
-#### Manage Bookings
-
-![Manage Bookings Lighthouse Report](documentation/accessibility/manage-bookings.png)
-
-#### Manage Menus
-
-![Manage Menus Lighthouse Report](documentation/accessibility/manage-menus.png)
-
-#### Edit Menus
-
-![Edit Menus Lighthouse Report](documentation/accessibility/edit-menus.png)
-
-#### Delete Menus
-
-![Delete Menus Lighthouse Report](documentation/accessibility/delete-menus.png)
-
-### WAVE
-Further accessibility testing was undertaken with WAVE.
-
-#### Home
-
-![Home Wave Report](documentation/accessibility/w-home.png)
-
-#### Menu
-
-![Menu Wave Report](documentation/accessibility/w-menu.png)
-
-#### Book
-
-![Book Wave Report](documentation/accessibility/w-book.png)
-
-#### Register
-
-![Register Wave Report](documentation/accessibility/w-register.png)
-
-#### Login
-
-![Login Wave Report](documentation/accessibility/w-login.png)
-
-#### My Profile
-
-![My Profile Wave Report](documentation/accessibility/w-my-profile.png)
-
-#### Edit Booking
-
-![Edit Booking Wave Report](documentation/accessibility/w-edit-booking.png)
-
-#### Delete Booking
-
-![Delete Booking Wave Report](documentation/accessibility/w-delete-booking.png)
-
-#### Staff Profile
-
-![Staff Profile Wave Report](documentation/accessibility/w-staff-profile.png)
-
-#### Manage Bookings
-
-![Manage Bookings Wave Report](documentation/accessibility/w-manage-bookings.png)
-
-#### Manage Menus
-
-![Manage Menus Wave Report](documentation/accessibility/w-manage-menus.png)
-
-#### Edit Menus
-
-![Edit Menus Wave Report](documentation/accessibility/w-edit-menus.png)
-
-#### Delete Menus
-
-![Delete Menus Wave Report](documentation/accessibility/w-delete-menus.png)
-
 ## Bugs
 
-When making a reservation it was found that bookings could be made using a date from the past.  To fix this I add a clean function to the forms.py to test whether the date is in the past and if so throw an exception error.
+- When trying to display the adoption requests on the advert detail page, I encountered an issue where the name would be shown but there was a blank avatar next to it, and when clicked on, it did not show the profile.  I discovered that whilst it was showing the correct adoptee, it was actually displaying the results from the api/adoptors endpoint rather than the profile itself. This was rectified by looping over the adoptor data and finding the corresponding profiles and updating the profile state accordingly.
+- When setting up the adverts section I had created an advert context file.  When it came to implementing the search feature, it wouldn't work correctly, it wouldn't fetch the results and I was finding it difficult to pass the query parameter to the context file. Having discussed the issue with tutor support it was decided that the best way forward would be to delete the context file and follow the steps in the walkthrough Moments project to set up the search feature. 
 
 Back to [README.MD](README.MD)

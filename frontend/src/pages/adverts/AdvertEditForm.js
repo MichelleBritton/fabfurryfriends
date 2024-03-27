@@ -53,7 +53,9 @@ function AdvertEditForm() {
                 isAdmin ? setAdvertData({
                     dog_name, breed, age, sex, quick_fact_1, quick_fact_2, 
                     quick_fact_3, quick_fact_4, quick_fact_5, content, image
-                }) : history.push('/');
+                }) : toast.error(
+                    "You do not have permission to access this page"
+                ), history.push('/');
             } catch(err) {
                 // console.log(err);
             }
