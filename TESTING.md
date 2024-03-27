@@ -95,6 +95,35 @@ Back to [README.MD](README.MD)
 |Create button           |Click button                                              |Saves form and redirects to the new advert page, alert user|As expected  |
 |Cancel button           |Click button                                              |Redirects to home page                                     |As expected  |    
 
+**Profile Page (Logged Out)**
+| **Testing**            | **Action**                                               | **Expected**                                              | **Outcome** |
+|------------------------|----------------------------------------------------------|-----------------------------------------------------------|-------------|
+|Authentication          |Attempt to access a profile page whilst logged out        |Redirect to home page, unauthorised alert                  |As expected  |
+
+**Profile Page (Logged In User)**
+| **Testing**     | **Action**                                       | **Expected**                                                       | **Outcome** |
+|-----------------|--------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access a profile page whilst logged in |Profile page is loaded                                              |As expected  |
+|Option to edit   |Click on three dots                               |Pop out menu with three icons to edit profile, username, password   |As expected  |
+
+**Profile Page (Logged In Admin User)**
+| **Testing**     | **Action**                                         | **Expected**                                                       | **Outcome** |
+|-----------------|----------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access any profile page whilst logged in |Profile page is loaded                                              |As expected  |
+
+**Edit Profile Page (Logged Out)**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access edit profile page whilst logged out |Redirect to home page, unauthorised alert                           |As expected  |
+
+**Edit Profile Page (Logged in User)**
+| **Testing**            | **Action**                                           | **Expected**                                                       | **Outcome** |
+|------------------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication          |Attempt to access edit profile page                   |Edit profile page is loaded                                         |As expected  |
+|Change image            |Click button                                          |Window opens to upload new image                                    |As expected  |
+|Form populated with data|View page                                             |Form is pre-populated with relevant profiel data                    |As expected  |
+|Save button             |Click button                                          |Form is saved, redirects back to profile page, confirmation alert   |As expected  |
+|Cancel button           |Click button                                          |Redirect back to profile page                                       |As expected  |
 
 
 ## Browser Testing

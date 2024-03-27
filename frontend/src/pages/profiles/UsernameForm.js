@@ -27,6 +27,9 @@ const UsernameForm = () => {
         if (currentUser?.profile_id?.toString() === id) {
             setUsername(currentUser.username);
         } else {
+          toast.error(
+            "You are not authorised to view this page"
+        )
             history.push("/");
         }
     }, [currentUser, history, id]);
