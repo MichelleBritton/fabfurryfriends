@@ -33,6 +33,9 @@ const UserPasswordForm = () => {
     useEffect(() => {
         if (currentUser?.profile_id?.toString() !== id) {
           // redirect user if they are not the owner of this profile
+          toast.error(
+            "You are not authorised to view this page"
+        )
           history.push("/");
         }
     }, [currentUser, history, id]);
