@@ -11,11 +11,14 @@ import defaultImage from "../../assets/default_advert.png"
 import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { toast } from "react-toastify";
 
 function AdvertCreateForm() {
+    const currentUser = useCurrentUser();
+    const isAdmin = currentUser?.is_admin_user;
     useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
     const [advertData, setAdvertData] = useState({
@@ -267,59 +270,68 @@ function AdvertCreateForm() {
     );
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Row>
-                <Col className="py-2 mx-auto" md={6} lg={8}>
-                    <Container
-                        className={`
-                            ${appStyles.Content} 
-                            d-flex flex-column justify-content-center
-                        `}
-                    >
-                        <Form.Group className="text-center">
-                            {image ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={image} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`} 
-                                            htmlFor="image-upload" 
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label 
-                                    className="d-flex justify-content-center" 
-                                    htmlFor="image-upload"
-                                >                                    
-                                    <Asset 
-                                        src={defaultImage} 
-                                        message="Click or tap to upload an image" 
-                                    />                                    
-                                </Form.Label>
-                            )}
-                           
-                            <Form.File 
-                                id="image-upload" 
-                                accept="image/*" 
-                                onChange={handleChangeImage} 
-                                ref={imageInput} 
-                            />
-                            {errors.image?.map((message, idx) => (
-                                <Alert key={idx} variant="warning">
-                                    {message}
-                                </Alert>
-                            ))}
-                        </Form.Group>
-                       {textFields}
-                    </Container>
-                </Col>
-            </Row>
-        </Form>
+        isAdmin ? (
+            <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Col className="py-2 mx-auto" md={6} lg={8}>
+                        <Container
+                            className={`
+                                ${appStyles.Content} 
+                                d-flex flex-column justify-content-center
+                            `}
+                        >
+                            <Form.Group className="text-center">
+                                {image ? (
+                                    <>
+                                        <figure>
+                                            <Image className={appStyles.Image} src={image} rounded />
+                                        </figure>
+                                        <div>
+                                            <Form.Label
+                                                className={`${btnStyles.Button} ${btnStyles.Blue} btn`} 
+                                                htmlFor="image-upload" 
+                                            >
+                                                Change the image
+                                            </Form.Label>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <Form.Label 
+                                        className="d-flex justify-content-center" 
+                                        htmlFor="image-upload"
+                                    >                                    
+                                        <Asset 
+                                            src={defaultImage} 
+                                            message="Click or tap to upload an image" 
+                                        />                                    
+                                    </Form.Label>
+                                )}
+                            
+                                <Form.File 
+                                    id="image-upload" 
+                                    accept="image/*" 
+                                    onChange={handleChangeImage} 
+                                    ref={imageInput} 
+                                />
+                                {errors.image?.map((message, idx) => (
+                                    <Alert key={idx} variant="warning">
+                                        {message}
+                                    </Alert>
+                                ))}
+                            </Form.Group>
+                        {textFields}
+                        </Container>
+                    </Col>
+                </Row>
+            </Form>
+        ) : (
+            <>
+                {toast.error(
+                    "You are not authorised to view this page"
+                )}            
+                {history.push('/')}     
+            </>       
+        )
     );
 }
 

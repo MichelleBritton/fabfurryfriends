@@ -79,9 +79,13 @@ Back to [README.MD](README.MD)
 |Delete advert link           |Click on icon                                 |Delete advert, redirect to home, alert to confirm|As expected           |
 
 **Edit Advert Page (Logged In Admin User)**
-| **Testing**            | **Action**                                             | **Expected**                                  | **Outcome**          |
-|------------------------|--------------------------------------------------------|-----------------------------------------------|----------------------|
-|Authentication          |Login as non-admin user, try to access edit advert page |Redirect to home page                          |As expected           |
+| **Testing**            | **Action**                                             | **Expected**                                             | **Outcome** |
+|------------------------|--------------------------------------------------------|----------------------------------------------------------|-------------|
+|Authentication          |Login as non-admin user, try to access edit advert page |Redirect to home page                                     |As expected  |
+|Form populated with data|View page                                               |Form is pre-populated with relevant advert data           |As expected  |
+|Change image button     |Click button                                            |Window opens to upload new image                          |As expected  |
+|Save button             |Click button and view advert                            |Updated form saved, redirected to advert, alert to confirm|As expected  |
+|Cancel button           |Click button                                            |Redirect back to advert                                   |As expected  |
 
     
     
