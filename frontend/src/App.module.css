@@ -41,7 +41,7 @@
 }
 
 .Teal {
-    color: #5ea5a4;
+    color: #1b6c6b;
 }
 
 .Red {
@@ -53,7 +53,7 @@
 }
   
 a {
-    color: #5ea5a4;
+    color: #1b6c6b;
     transition: color ease-in-out 0.3s;
 }
 
@@ -68,7 +68,7 @@ a:hover i {
 }
 
 i {
-    color: #5ea5a4;
+    color: #287b7a;
     font-size: 1.6rem;
     padding: 7px;
     vertical-align: middle;

@@ -11,7 +11,8 @@ class Adoptor(models.Model):
     owner = models.ForeignKey(
         User, related_name="potential_adoptor", on_delete=models.CASCADE
     )
-    advert = models.ForeignKey(Advert, related_name="adopt", on_delete=models.CASCADE)
+    advert = models.ForeignKey(Advert,
+                               related_name="adopt", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -58,22 +58,14 @@ Full testing was performed on the following:
 ## Validator Testing
 ### W3C HTML Validator
 
-No errors were returned when passing through the official W3C Validator.  The following pages have been tested:
+Only index.js page has HTML code and this comes up clear of errors in the validator.
 
-- Home
-- Menu
-- Book
-- Register
-- Login
-- Logout
-- My Profile
-- Edit Booking
-- Delete Booking
-- Staff Profile
-- Manage Bookings
-- Manage Menus
-- Edit Menu
-- Delete Menu
+The following steps were followed in order to check HTML code throughout the website:
+
+- navigate to the page
+- click right and select 'View page source'
+- code will open in new tab - copy the code
+- paste the code in the validator as 'text input'
 
 ![HTML Validation](documentation/validation/html.png)
 
@@ -83,39 +75,13 @@ No errors were found when passing through the official Jigsaw validator.
 
 ![CSS Validation](documentation/validation/css.png)
 
-### Javascript Validator
+### Javascript 
 
-When validating the Javascript one undefined variable relating to Bootstrap was found.  I have chosen to ignore this as I believe there is no fix for this. 
-
-![JS Validation](documentation/validation/js.png)
+!!!!  ASK DAISY !!!!
 
 ### Python Validator
 
-I used the Code Institute PEP8 Python Linter to validate my Python code and ensure it was free from errors.
-
-#### admin.py
-
-![admin.py Validation](documentation/validation/admin.png)
-
-#### apps.py
-
-![apps.py Validation](documentation/validation/apps.png)
-
-#### filters.py
-
-![filters.py Validation](documentation/validation/filters.png)
-
-#### forms.py
-
-![forms.py Validation](documentation/validation/forms.png)
-
-#### models.py
-
-![models.py Validation](documentation/validation/models.png)
-
-#### views.py
-
-![views.py Validation](documentation/validation/views.png)
+No errors when passing through Code Institute PEP8 Python Linter.
 
 ## Accessibility Testing
 ### Lighthouse

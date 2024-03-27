@@ -8,6 +8,10 @@
         font-size: 1.4rem;
     }
 }
+.NavBar a {
+    color: #287b7a;
+}
+.NavBar a.Active,
 .Active,
 .Active i {
     color: #815ea5;

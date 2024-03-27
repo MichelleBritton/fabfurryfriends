@@ -32,7 +32,8 @@ class Profile(models.Model):
     preferred_age = models.CharField(max_length=255, blank=True)
     when = models.TextField(blank=True)
     activities = models.TextField(blank=True)
-    image = models.ImageField(upload_to="images/", default="../default_profile_lyldgl")
+    image = models.ImageField(upload_to="images/",
+                              default="../default_profile_lyldgl")
 
     class Meta:
         ordering = ["-created_at"]

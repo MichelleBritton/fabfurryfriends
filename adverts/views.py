@@ -25,7 +25,8 @@ class AdvertList(generics.ListCreateAPIView):
     # Check if the user is an admin
     def perform_create(self, serializer):
         if not self.request.user.is_staff:
-            raise PermissionDenied("You do not have permission to perform this action.")
+            raise PermissionDenied(
+                "You do not have permission to perform this action.")
         serializer.save(owner=self.request.user)
 
 

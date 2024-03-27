@@ -15,7 +15,8 @@ class CurrentUserSerializer(UserDetailsSerializer):
         )
 
     """
-    credit: https://stackoverflow.com/questions/57992640/how-to-show-content-to-staff-user-only-using-react-and-drf
+    credit: https://stackoverflow.com/questions/57992640/
+    how-to-show-content-to-staff-user-only-using-react-and-drf
     """
 
     def get_is_admin_user(self, obj):
