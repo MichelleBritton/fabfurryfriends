@@ -87,8 +87,13 @@ Back to [README.MD](README.MD)
 |Save button             |Click button and view advert                            |Updated form saved, redirected to advert, alert to confirm|As expected  |
 |Cancel button           |Click button                                            |Redirect back to advert                                   |As expected  |
 
-    
-    
+**Create Advert Page (Logged In Admin User)**
+| **Testing**            | **Action**                                               | **Expected**                                              | **Outcome** |
+|------------------------|----------------------------------------------------------|-----------------------------------------------------------|-------------|
+|Authentication          |Login as non-admin user, try to access create advert page |Redirect to home page, unauthorised alert                  |As expected  |    
+|Upload image            |Click button                                              |Window opens to upload new image                           |As expected  | 
+|Create button           |Click button                                              |Saves form and redirects to the new advert page, alert user|As expected  |
+|Cancel button           |Click button                                              |Redirects to home page                                     |As expected  |    
 
 
 

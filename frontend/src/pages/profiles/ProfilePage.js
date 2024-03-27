@@ -11,6 +11,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { toast } from "react-toastify";
 
 function ProfilePage( props ) {
     const {imageSize=80} = props;
@@ -243,7 +244,12 @@ function ProfilePage( props ) {
                                 {mainProfile} 
                             </>  
                         ) : (
-                            history.push('/')
+                            <>
+                                {toast.error(
+                                    "You are not authorised to view this page"
+                                )}            
+                                {history.push('/')}     
+                            </>    
                         )
                     ) : (
                         <Asset spinner />
