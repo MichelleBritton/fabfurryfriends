@@ -187,16 +187,10 @@ Full testing was performed on the following:
 - Windows 10 - Firefox 119
 - Windows 10 - Chrome 119
 - Windows 7 - Edge 109
-- Windows 7 - Firefox 112
 - Windows 7 - Chrome 109
 - Mac Ventura - Safari 16.5
-- Mac Ventura - Chrome 120
 - Mac Ventura - Firefox 120
 - Mac Ventura - Edge 120
-- Mac Sierra - Safari 10.1
-- Mac Sierra - Firefox 115
-- Mac Sierra - Chrome 103
-- Mac Sierra - Edge 103
 
 ## Validator Testing
 ### W3C HTML Validator

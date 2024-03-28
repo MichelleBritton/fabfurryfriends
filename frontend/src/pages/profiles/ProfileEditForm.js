@@ -205,7 +205,7 @@ const ProfileEditForm = () => {
                 ...currentUser,
                 profile_image: data.image,
             }));            
-            history.goBack();
+            history.push(`/profiles/${id}`);
             toast.success("Profile edited successfully!");
         } catch (err) {
             toast.error("Error submitting changes. Please try again.");
