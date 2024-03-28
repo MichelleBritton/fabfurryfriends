@@ -54,12 +54,12 @@ Back to [README.MD](README.MD)
 **Advert Detail Page (Any auth)**
 | **Testing**                 | **Action**      | **Expected**                                                                   | **Outcome**          |
 |-----------------------------|-----------------|--------------------------------------------------------------------------------|----------------------|
-|Advert details               |View page        |Advert image, date updated, dog name and content is visible                     |As expected           |
-|Quick Facts                  |View page        |A Quick Facts panel is visible in the left hand column                          |As expected           |
-|Go back button               |Click button     |Button is visible in the left hand column and redirects to previous page        |As expected           |
-|Adoption button              |View page        |No adoption button visible                                                      |As expected           |
-|Adoption requests            |View page        |No adoption requests visible                                                    |As expected           |
-|Option to edit/delete advert |View page        |No option to edit/delete advert visible                                         |As expected           |
+|Advert details |View page|Advert image, date updated, dog name and content is visible|As expected|
+|Quick Facts |View page|A Quick Facts panel is visible in the left hand column|As expected|
+|Go back button |Click button|Button is visible in the left hand column and redirects to previous page|As expected|
+|Adoption button |View page|No adoption button visible|As expected|
+|Adoption requests |View page|No adoption requests visible|As expected|
+|Option to edit/delete advert |View page        |No option to edit/delete advert visible|As expected|
 
 **Advert Detail Page (Logged In User)**
 | **Testing**                 | **Action**      | **Expected**                                                                   | **Outcome**          |
