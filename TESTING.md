@@ -177,9 +177,8 @@ Full testing was performed on the following:
 - iPad 10th Gen - Safari and Chrome
 - iPad Air 5 - Safari and Chrome
 - iPad Pro 11 - Safari and Chrome
-- Samsung Galaxy S22 - Chrome and Firefox
-- Samsung Galaxy S23 Ultra - Chrome and Firefox
-- Samsung Galaxy 8 - Chrome and Firefox
+- Samsung Galaxy S22 - Chrome 
+- Samsung Galaxy S23 Ultra - Chrome
 - Samsung Galaxy Note 20 - Chrome and Firefox
 - Windows 11 - Edge 120
 - Windows 11 - Firefox 120

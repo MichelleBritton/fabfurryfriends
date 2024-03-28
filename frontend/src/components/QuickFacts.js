@@ -17,7 +17,7 @@ const QuickFacts = (props) => {
     } = props;
 
     return (
-        <Card className={appStyles.Content}>
+        <Card className={`${appStyles.Content} mb-5`}>
             <Card.Body>  
                 <Card.Title className={styles.CardTitle}>Quick Facts</Card.Title>                                      
                 {dog_name && <Card.Text>Name: {dog_name}</Card.Text>}                      

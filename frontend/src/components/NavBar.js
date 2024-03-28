@@ -6,14 +6,13 @@ import {
     useCurrentUser, useSetCurrentUser 
 } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
-
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
-
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { removeTokenTimestamp } from "../utils/utils";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -26,6 +25,9 @@ const NavBar = () => {
           await axios.post("dj-rest-auth/logout/");
           setCurrentUser(null);
           removeTokenTimestamp();
+          toast.success(
+            "Logged out successfully"
+        );
         } catch (err) {
           // console.log(err);
         }
