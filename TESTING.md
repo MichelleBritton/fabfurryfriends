@@ -112,9 +112,9 @@ Back to [README.MD](README.MD)
 |Authentication   |Attempt to access any profile page whilst logged in |Profile page is loaded                                              |As expected  |
 
 **Edit Profile Page (Logged Out)**
-| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
-|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|Authentication   |Attempt to access edit profile page whilst logged out |Redirect to home page, unauthorised alert                           |As expected  |
+| **Testing**     | **Action**                                                             | **Expected**                                     | **Outcome** |
+|-----------------|------------------------------------------------------------------------|--------------------------------------------------|-------------|
+|Authentication   |Attempt to access edit profile page whilst logged out or as another user|Redirect to home page, unauthorised alert         |As expected  |
 
 **Edit Profile Page (Logged in User)**
 | **Testing**            | **Action**                                           | **Expected**                                                       | **Outcome** |
@@ -125,6 +125,44 @@ Back to [README.MD](README.MD)
 |Save button             |Click button                                          |Form is saved, redirects back to profile page, confirmation alert   |As expected  |
 |Cancel button           |Click button                                          |Redirect back to profile page                                       |As expected  |
 
+**Edit Username Page (Logged Out)**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access edit username page whilst logged out or as another user |Redirect to home page, unauthorised alert       |As expected  |
+
+**Edit Username Page (Logged In User)**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access edit username page                  |Edit username page loaded                                           |As expected  |
+|Save button      |Click button                                          |Form is saved, redirects back to profile page, confirmation alert   |As expected  |
+|Cancel button    |Click button                                          |Redirect back to profile page                                       |As expected  |
+
+**Change Password Page (Logged Out)**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access change password page whilst logged out or as another user |Redirect to home page, unauthorised alert     |As expected  |
+
+**Change Password Page (Logged In User)**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Authentication   |Attempt to access change password page                |Change password page loaded                                         |As expected  |
+|Save button      |Click button                                          |Form is saved, redirects back to profile page, confirmation alert   |As expected  |
+|Cancel button    |Click button                                          |Redirect back to profile page                                       |As expected  |
+
+**Sign Up Page**
+| **Testing**       | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-------------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Sign Up button     |Click button                                          |Confirmation alert and redirect to login page                       |As expected  |
+|Login button       |Click button                                          |Load Login page                                                     |As expected  |
+|Password match     |Type in two different passwords                       |Form validation error                                               |As expected  |
+|Duplicate username |Attempt to sign up with an existing username          |Form validation error                                               |As expected  |
+
+**Login Page**
+| **Testing**     | **Action**                                           | **Expected**                                                       | **Outcome** |
+|-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
+|Login button     |Click button                                          |Confirmation alert and redirect to home page                        |As expected  |
+|Sign up button   |Click button                                          |Load Sign up page                                                   |As expected  |
+|Wrong credentials|Atempt to login with incorrect password and username. |Form validation error                                              |As expected  | 
 
 ## Browser Testing
 To ensure that the website and features work well across a multitude of browsers, I used BrowserStack to fully test using a number of browsers, operating systems and devices. 

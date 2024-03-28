@@ -67,7 +67,7 @@ const Advert = (props) => {
         <Card className={appStyles.Content}>
             <Card.Img
                 src={image}
-                alt={dog_name}
+                alt={`Rescue dog called ${dog_name}`}
                 className={appStyles.ImageRounded} 
             />
             {location.pathname === `/adverts/${id}` ? (

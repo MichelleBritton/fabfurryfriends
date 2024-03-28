@@ -98,7 +98,7 @@ const NavBar = () => {
             <Container fluid>
                 <NavLink to="/">
                     <Navbar.Brand className="pl-5">
-                        <img src={logo} alt="logo" height="150" />
+                        <img src={logo} alt="Fab Furry Friends Logo" height="150" />
                     </Navbar.Brand>
                 </NavLink>
                 
