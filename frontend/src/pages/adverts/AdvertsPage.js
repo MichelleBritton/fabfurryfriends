@@ -59,7 +59,8 @@ function AdvertsPage ({ message }) {
                             onChange={(event) => setQuery(event.target.value)} 
                             type="text" 
                             className="mr-sm-2" 
-                            placeholder="Search Adverts" 
+                            placeholder="Search Adverts"
+                            aria-label="Search" 
                         />
                     </Form>                  
                 </Col>

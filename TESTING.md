@@ -162,7 +162,7 @@ Back to [README.MD](README.MD)
 |-----------------|------------------------------------------------------|--------------------------------------------------------------------|-------------|
 |Login button     |Click button                                          |Confirmation alert and redirect to home page                        |As expected  |
 |Sign up button   |Click button                                          |Load Sign up page                                                   |As expected  |
-|Wrong credentials|Atempt to login with incorrect password and username. |Form validation error                                              |As expected  | 
+|Wrong credentials|Atempt to login with incorrect password and username. |Form validation error                                               |As expected  | 
 
 ## Browser Testing
 To ensure that the website and features work well across a multitude of browsers, I used BrowserStack to fully test using a number of browsers, operating systems and devices. 
