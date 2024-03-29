@@ -214,7 +214,7 @@ No errors were found when passing through the official Jigsaw validator.
 
 ### Javascript 
 
-!!!!  ASK DAISY !!!!
+Javascript was validated using the terminal and built in linter that came with Create React App. No warnings or errors are found.
 
 ### Python Validator
 

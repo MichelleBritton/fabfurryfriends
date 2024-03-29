@@ -23,19 +23,8 @@ Fab Furry Friends is a fictional a dog rescue organisation created for Portfolio
     - [Typography](#typography)
 - [Tools and Technologies Used](#tools-and-technologies-used)
     - [Installed Packages](#installed-packages)
-- [Testing and Bugs](#testing-and-bugs)
+- [Testing](#testing)
 - [Deployment](#deployment)
-    - [Heroku Deployment - Combined Project Set Up](#heroku-deployment-combined-project-set-up)
-    - [Creating the Django Project](#creating-the-django-project)
-    - [Set up Environment Variables](#set-up-environment-variables)
-    - [Setting up settings.py](#setting-up-settings-py)
-    - [Heroku Deployment](#heroku-deployment)
-    - [Deploy on Heroku](#deploy-on-heroku)
-    - [Fork the repository](#fork-the-repository)
-    - [Clone the repository](#clone-the-repository)
-- [Github](#github)
-    - [To fork the repository on Github](#to-fork-the-repository-on-github) 
-    - [To clone the repository on Github](#to-clone-the-repository-on-github)
 - [Credits](#credits)
     - [Content](#content)
     - [Media](#media)
@@ -279,7 +268,9 @@ Checks are made to see if the current user is an admin user, if so, an adoption 
 `4A As a developer, I can create a new blank profile with a default image when a user is created`
 
 Implementation:
-When creating the Profile model, Signals have been used to ensure that when a new user is created the profile model is also implemented and associated with that user.
+When creating the Profile model, Signals have been used to ensure that when a new user is created the profile model is also implemented and associated with that user. To automatically populate the select fields in the profile, API endpoints were created for each so that they could be fetched in a GET request and looped over in the form to display the correct choices.
+
+![Screenshot of choices](documentation/screenshots/choices.png)
 
 `4B As a logged in admin user, I want to be able to view profiles to find out more about them to see if they are a match to the dog`
 
@@ -335,20 +326,23 @@ Implementation:
 The favourites section has not been implemented and will be considered as a future feature.
 
 ### Database Design
-**!!!!!!!! NEED DAISY'S HELP TO SORT THIS !!!!!!!!!!!!!!!!!**
 
-![Flowchart](documentation/flowchart/flowchart.png)
+![Flowchart](documentation/flowchart/database.png)
 
 ### Reusable React Components
 
 Reusable React components are self-contained, modular pieces of UI that can be used and reused across different parts of an application. They promote code reusability, maintainability, and consistency in design. Here are the ones I have used within my project:
 
--   Navbar.js
--   Asset.js
--   Avatar.js
--   Footer.js
--   NotFound.js
--   MoreDropdown.js
+-   Navbar.js: The Navbar component has been reused throughout the entire site to ensure a consistent and intuitive user experience
+-   Asset.js: The Asset component has been reused on the following pages:
+    -   Create Advert page to display a default image in the upload image section.
+    -   Advert page to display a spinner whilst the content is loading.
+    -   Adverts page to display a spinner whilst Infinite Scroll loads more adverts, a spinner whilst the adverts are loading and also to show a no results image and message.
+    -   Home page to display a no results image and message, and a spinner whilst the adverts are loading.
+    -   Profile page to display a spinner whilst the profile loads.
+-   Avatar.js: The Avatar component has been used for the Profile page and the adoptors requests section.
+-   Footer.js: The Footer component has been reused throughout the entire site to ensure a consitent user experience.
+-   MoreDropdown.js: This component has been reused on the Advert page to display the edit advert options and also on the Profile page to display the edit profile options.
 
 ## Skeleton
 ### Wireframes
@@ -423,6 +417,7 @@ The following font was used for this project which was imported from Google Font
 - [Font Awesome](https://fontawesome.com/) - to add icons 
 - [Am I Responsive?](https://ui.dev/amiresponsive) - to generate a screenshot of the website on multiple devices
 - [Shields](https://shields.io/) - to generate badges for inclusion in the README field
+- [DBeaver](https://dbeaver.io/) - to generate database diagram
 
 - [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) - for testing and debugging the website
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - for accessibility and performance reporting
@@ -456,6 +451,15 @@ The following font was used for this project which was imported from Google Font
 The testing documentation can be found at [TESTING.md](TESTING.md)
 
 ## Deployment
+### Version Control
+Code has been pushed to the remote repository on GitHub with the following commands:
+
+`git add .` - to add files ready to commit
+
+`git commit -m "message"` - to commit code
+
+`git push` - final command to push commited code to the remote repository
+
 ### Deploy on Heroku
 The site was deployed to Heroku using the following steps:
 
