@@ -4,6 +4,7 @@ import styles from "../styles/QuickFacts.module.css";
 import { Card } from "react-bootstrap";
 
 const QuickFacts = (props) => {
+    // Destructure props
     const {
         dog_name,
         breed,

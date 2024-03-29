@@ -3,6 +3,7 @@ import NoResults from "../assets/no-results.png";
 import styles from "../styles/NotFound.module.css";
 import Asset from "./Asset.js";
 
+// Page not found component
 const NotFound = () => {
     return (
         <div className={styles.Margin}>

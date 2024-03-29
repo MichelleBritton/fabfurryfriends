@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Automatically close the navigation when user clicks 
+// on link 
 const useClickOutsideToggle = () => {    
     const [expanded, setExpanded] = useState(false);
     const ref = useRef(null);

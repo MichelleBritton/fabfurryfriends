@@ -3,6 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import styles from "../styles/MoreDropdown.module.css";
 import { useHistory } from "react-router-dom";
 
+// Display clickable icon
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     <i
         className="fas fa-ellipsis-v"
@@ -14,6 +15,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     />
 ));
 
+// Pop out menu
 export const MoreDropdown = ({handleEdit, handleDelete}) => {
     return (
         <Dropdown className="ml-auto" drop="left">
@@ -42,6 +44,7 @@ export const MoreDropdown = ({handleEdit, handleDelete}) => {
     );
 };
 
+// Pop out menu for Profile Edit options
 export function ProfileEditDropdown({ id }) {
     const history = useHistory();
 

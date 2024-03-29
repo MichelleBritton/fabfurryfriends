@@ -33,6 +33,7 @@ function Home ({ message }) {
         return a;
     }
 
+    // Fetch adverts
     useEffect(() => {
         const fetchAdverts = async () => {
             try {
@@ -49,6 +50,9 @@ function Home ({ message }) {
         fetchAdverts();         
     }, []);
 
+    // Shuffle adverts and select first four adverts to
+    // display a random selection each time the page is 
+    // refreshed
     useEffect(() => {
         if (adverts.results.length > 0) {
             const shuffledAdverts = shuffle(adverts.results);

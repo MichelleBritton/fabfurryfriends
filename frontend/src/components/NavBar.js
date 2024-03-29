@@ -20,6 +20,7 @@ const NavBar = () => {
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
     const isAdmin = currentUser && currentUser.is_admin_user;
 
+    // Handle log out funcionality
     const handleSignOut = async () => {
         try {
           await axios.post("dj-rest-auth/logout/");
@@ -33,6 +34,8 @@ const NavBar = () => {
         }
       };
 
+    // Create Advert Icon variable to display when admin user
+    // is logged in
     const createAdvertIcon = (
         <NavLink 
             exact
@@ -44,6 +47,7 @@ const NavBar = () => {
         </NavLink>
     );
 
+    // Logged in icons variable to display when users are logged in
     const loggedInIcons = (
         <>
             <NavLink 
@@ -69,6 +73,7 @@ const NavBar = () => {
         </>
     );
 
+    // Logged out icons variable to display when users are logged out
     const loggedOutIcons = (
         <>
             <NavLink 

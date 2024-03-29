@@ -1,11 +1,10 @@
 import React from 'react';
-
 import styles from "../styles/Footer.module.css";
-
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 
+// Footer component to display company information and contact details
 const Footer = () => {
     return (
         <Container className={`${styles.Footer} px-5 pt-5 pb-4`} fluid>

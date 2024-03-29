@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 
+// Render profile image and name
 const Profile = (props) => {
   const {profile, imageSize=55} = props;
   const {id, image, owner} = profile;
